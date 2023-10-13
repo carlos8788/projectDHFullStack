@@ -1,22 +1,23 @@
-# Temática: Productos y planes para Gimnasio
+# Temática: Productos y artículos de River Plate
 
-## DIGIHOUSE
+## River Shopping 
 
-### Productos y servicios: Planes de entrenamientos, suplementos, accesorios e indumentaria para deporte
+### Productos y servicios: Todo relacionado al mundo River plate desde entradas y
+### articulos como indumentaria todo relacionado al millonario
 
 - Pérez Luis:
 
 ### Referentes del mercado:
-- [Titansport](https://titansport.com.ar/)
-- [Totalnutrition](https://totalnutrition.com.ar/)
-- [Nutrishop](https://www.nutrishop.com.ar/)
-- [Gymtonic](https://www.gymtonic.com.ar)
-- [Digitalsport](https://www.digitalsport.com.ar/)
+- [Lacasaderiverplate](https://www.lacasaderiverplate.com.ar/)
+- [Tiendariver](https://www.tiendariver.com/)
+- [Adidas](https://www.adidas.com.ar/river_plate)
+- [Cariverplate](https://www.cariverplate.com.ar/)
+- [Milloshop](https://www.milloshop.com.ar/)
 
 ### Paleta de colores:
-- **#FFE500 (amarillo )**   
-- **#FF5400 (anaranjado)**   
-- **#FF0099 (fuxia medio neon)**
+- **#D82A1C (rojo)**   
+- **#222222 (negro)**   
+- **#F6F6F6 (gris)**
 
 ### Tecnologías
 
@@ -27,4 +28,4 @@
 - JavaScript
 - render
 
-## Link: [DIGIHOUSE](https://digihouse.onrender.com/)
+## Link: [RIVERSHOPPING](https://.onrender.com/)
