@@ -1,0 +1,56 @@
+[
+    {
+        "id": "1",
+        "name": "Barra Cromada",
+        "image": "/images/barra.jpg",
+        "category" : "En oferta",
+        "description": "Barra cromada de gimnasio fabricada con acero resistente.",
+        "color": "Plateado Brillante",
+        "price": 50000
+    },
+    {
+        "id": "2",
+        "name": "Nike grip push up",
+        "image": "/images/Naike.jpg",
+        "category":"Más visitado",
+        "description": "Las Nike Grip Push Up son el accesorio esencial para mejorar tu rutina de flexiones.",
+        "color": "negro",
+        "price": 18000
+    },
+    {
+        "id": "3",
+        "name": "Whey Proteina x 930g",
+        "image": "/images/Prote.webp",
+        "category":"Más visitado",
+        "description":"Esta fórmula de alta calidad se absorbe rápidamente, brindando a tus músculos el impulso de proteína que necesitan para crecer y recuperarse después de entrenar.",
+        "color": null,
+        "price": 15000
+    },
+    {
+        "id": "4",
+        "name": "Botella de agua deportiva",
+        "image": "/images/botella_agua_deportiva.jpg",
+        "category":"En oferta",
+        "description": "Diseñada pensando en atletas y entusiastas del deporte, esta botella resistente y ergonómica te permite llevar tus bebidas favoritas a donde quiera que vayas.",
+        "color": "negro",
+        "price": 4250
+    },
+    {
+        "id": "5",
+        "name": "Saco de boxeo",
+        "image": "/images/saco_boxeo.jpg",
+        "category":"Más visitado",
+        "description": "Fabricado con materiales de alta resistencia, este saco te permite liberar energía y mejorar tus habilidades de golpeo mientras trabajas en tu condición física.",
+        "color": "rojo",
+        "price": 14250
+    },
+    {
+        "id": "6",
+        "name": "Guantes de boxeo",
+        "image": "/images/guantes_boxeo.jpg",
+        "category" :"Más visitado",
+        "description": "Fabricados con materiales de alta calidad 'y' atención meticulosa a los detalles, estos guantes te permiten entrenar con confianza y estilo.",
+        "color": "rojo",
+        "price": 10000
+    }
+]

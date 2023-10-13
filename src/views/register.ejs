@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('partial/head') %>
+
+</head>
+
+<body>
+
+    <%- include('partial/header') %>
+        <main class="form-container">
+
+            <form class="form" method="POST" action="/user/register" enctype="multipart/form-data">
+                <h2 class="titulo-form-registro">Formulario de Registro</h2>
+
+                <div class="div-form">
+                    <label for="nombre">Nombre de usuario </label>
+                    <input type="text" id="nombre" name="username" value="<%= locals.old ? old.username : '' %>"
+                        class="<%= (locals.errors && errors.username) ? 'error-input' : '' %>">
+                    <%- locals.errors && errors.username ? `<p class="msg-error">${errors.username.msg}</p>` : '' %>
+                </div>
+
+                <div class="div-form">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" value="<%= locals.old ? old.nombre : '' %>"
+                        class="<%= (locals.errors && errors.nombre) ? 'error-input' : '' %>">
+                    <%- locals.errors && errors.nombre ? `<p class="msg-error">${errors.nombre.msg}</p>` : '' %>
+                </div>
+
+                <div class="div-form">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" name="apellido" value="<%= locals.old ? old.apellido : '' %>"
+                        class="<%= (locals.errors && errors.apellido) ? 'error-input' : '' %>">
+                    <%- locals.errors && errors.apellido ? `<p class="msg-error">${errors.apellido.msg}</p>` : '' %>
+                </div>
+
+                <div class="div-form">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" value="<%= locals.old ? old.email : '' %>"
+                        class="<%= (locals.errors && errors.email) ? 'error-input' : '' %>">
+                    <%- locals.errors && errors.email ? `<p class="msg-error">${errors.email.msg}</p>` : '' %>
+                </div>
+
+                <div class="div-form">
+                    <label for="reemail">Confirmar Correo Electrónico</label>
+                    <input type="email" id="reemail" name="re_email" value="<%= locals.old ? old.re_email : '' %>"
+                        class="<%= (locals.errors && errors.re_email) ? 'error-input' : '' %>">
+                    <%- locals.errors && errors.re_email ? `<p class="msg-error">${errors.re_email.msg}</p>` : '' %>
+                </div>
+
+                <div class="div-form">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password"
+                        class="<%= (locals.errors && errors.password) ? 'error-input' : '' %>">
+                    <%- locals.errors && errors.password ? `<p class="msg-error">${errors.password.msg}</p>` : '' %>
+                </div>
+
+                <div class="div-form">
+                    <label for="repassword">Confirmar Contraseña</label>
+                    <input type="password" id="repassword" name="re_password"
+                        class="<%= (locals.errors && errors.re_password) ? 'error-input' : '' %>">
+                    <%- locals.errors && errors.re_password ? `<p class="msg-error">${errors.re_password.msg}</p>` : ''
+                        %>
+                </div>
+
+                <div class="div-form">
+                    <label for="avatar">Cargue su foto de perfil</label>
+                    <input name="avatar" type="file">
+                    <% if (locals.errors && errors.avatar) { %>
+                        <p class="msg-error">
+                            <%= errors.avatar.msg %>
+                        </p>
+                        <% } %>
+                </div>
+
+
+                <div class="div-form-bt">
+                    <button type="submit" class="btnPrimary">Registrarse</button>
+                    <button type="reset" class="btnPrimary">Cancelar</button>
+                </div>
+
+            </form>
+        </main>
+
+
+        <%- include('partial/footer') %>
+</body>
+
+</html>

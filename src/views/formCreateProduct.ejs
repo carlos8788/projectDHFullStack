@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partial/head') %>
+        <title>Form Create Product</title>
+</head>
+
+<body>
+    <%- include('partial/header') %>
+        <main class="mainCreateProduct">
+            <h1 class="titleFormCreateProduct">Cargar Nuevo Producto</h1>
+            <form class="formCreateProduct" action="/agregar-producto" method="post">
+                <label class="nameProduct" for="name">Nombre del producto:</label>
+                <input class="createProduct" type="text" id="name" name="name" required>
+
+                <label class="nameProduct" for="description">Descripción:</label>
+                <textarea class="textAreaCreateProduct" id="description" name="description" required></textarea>
+
+                <label for="image" class="custom-file-upload">
+                    <button type="button">Subir imagen</button>
+                </label>
+                <input class="createProduct" type="file" id="image" name="image" accept="image/*" required="">
+
+                <label class="nameProduct" for="category">Categoría:</label>
+                <input class="createProduct" type="text" id="category" name="category" required>
+
+                <label class="nameProduct" for="colors">Colores:</label>
+                <input class="createProduct" type="text" id="colors" name="colors" required>
+
+                <label class="nameProduct" for="price">Precio:</label>
+                <input class="createProduct" type="number" id="price" name="price" step="0.01" required>
+
+                <button class="btnPrimary" type="submit">Agregar Producto</button>
+            </form>
+        </main>
+        <%- include('partial/footer')%>
+</body>
+
+</html>

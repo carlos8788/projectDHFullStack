@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partial/head') %>
+        <title>Detalle del Producto</title>
+</head>
+
+<body>
+
+    <%- include('partial/header') %>
+        <main>
+            <div class="product-detail">
+                <div class="product-img">
+                    <img src="<%= producto.image %>" alt="<%= producto.name %>">
+                </div>
+                <div class="product-info">
+                    
+                    <h2><%= producto.name %></h2>
+                    <p><%= producto.description %></p>
+                    <p><strong>Precio: $<%= producto.price %></strong></p>
+                    <p>Hasta 6 cuotas sin interes</p>
+
+                    <div class="product-details">
+                        <div class="detail-column">
+                            <p><strong>Género:</strong> Unisex</p>
+                            <p><strong>Adecuado para:</strong> Entrenamiento</p>
+                            <p><strong>Garantía:</strong> Contra defecto de fabricación</p>
+                        </div>
+                        <div class="detail-column">
+                            <p><strong>Origen:</strong> Importado</p>
+                            <p><strong>País del fabricante:</strong> China</p>
+                            <p><strong>Marca:</strong> Nike</p>
+                        </div>
+                    </div>
+                    <button class="btnPrimary">Agregar al Carrito</button>
+                </div>
+            </div>
+        </main>
+
+
+        <%- include('partial/footer') %>
+
+</body>
+
+</html>

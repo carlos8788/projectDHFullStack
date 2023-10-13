@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%- include('partial/head') %>
+</head>
+
+<body>
+
+
+    <%- include('partial/header') %>
+
+
+        <main class="home">
+
+            <section class="imagenes">
+                <img src="/images/ejercicio.jpg" class="imagen">
+                <img src="/images/ejercicio2.jpg" class="imagen2">
+                <img src="/images/ejercicio3.jpg" class="imagen3">
+            </section>
+
+            <section class="enlaces">
+                <a href="#gym" class="gym">GYM</a>
+                <a href="#planes" class="planes">planes</a>
+                <a href="#sport" class="sport">sport</a>
+                <a href="#" class="contacto">contacto</a>
+            </section>
+
+            <section>
+                <img id="gym" src="/images/FH1.png" class="bannerGrande">
+            </section>
+
+            <section class="spamLogin">
+                <div><a href="/register">Registrarse</a></div>
+            </section>
+
+            <section id="sport" class="productosDestacados">
+                <% mostVisited.forEach(producto => { %>
+                    <div class="elemento">
+                        <img src="<%= producto.image %>" alt="<%= producto.name %>" />
+                        <div class="caja">
+                            <div class="nombre"><b><%= producto.name %></b></div>
+                            <div class="descripcion"><%= producto.description %></div>
+                            <div class="color">Color: <%= producto.color || 'No especificado' %></div>
+                            <div class="precio">$<%= producto.price %></div>
+                        </div>
+                        <a href="/product/productDetail/<%= producto.id %>" class="btnPrimary">Añadir al carrito</a>
+                    </div>
+                <% }); %>
+            </section>
+        </main>
+
+        <%- include('partial/footer')%>
+
+</body>
+
+</html>
