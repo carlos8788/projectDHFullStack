@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -7,28 +7,42 @@
 </head>
 
 <body>
-
-
     <%- include('partial/header') %>
 
 
         <main class="home">
 
-            <section class="imagenes">
-                <img src="/images/ejercicio.jpg" class="imagen">
-                <img src="/images/ejercicio2.jpg" class="imagen2">
-                <img src="/images/ejercicio3.jpg" class="imagen3">
-            </section>
+            <div id="carouselExampleFade" class="carousel slide carousel-fade">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="/images/ejercicio.jpg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="/images/ejercicio2.jpg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="/images/ejercicio3.jpg" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
 
             <section class="enlaces">
-                <a href="#gym" class="gym">GYM</a>
-                <a href="#planes" class="planes">planes</a>
-                <a href="#sport" class="sport">sport</a>
-                <a href="#" class="contacto">contacto</a>
+                <a href="#" class="">INDUMENTARIA</a>
+                <a href="#" class="">FIXTURE</a>
+                <a href="#" class="">NOTICIAS</a>
+                <a href="#" class="">CONTACTO</a>
             </section>
 
             <section>
-                <img id="gym" src="/images/FH1.png" class="bannerGrande">
+                <img id="" src="/images/monumental.jpg" class="bannerGrande" alt="Monumental">
             </section>
 
             <section class="spamLogin">
