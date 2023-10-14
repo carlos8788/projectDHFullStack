@@ -46,7 +46,11 @@ module.exports = {
         res.cookie('auth_token', token);
         res.redirect('/');
     },
-
+    profile: (req, res) => {
+        if(!req.user) return res.redirect('/user/login')
+        console.log(req.user);
+        return res.render('profile', {user: req.user})
+    },
 
     logout: (req, res) => {
         try {

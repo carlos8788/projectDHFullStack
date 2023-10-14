@@ -3,10 +3,11 @@ const router = express.Router()
 const userController = require('../controller/userController')
 const { validateRegister } = require('../middlewares/validations')
 const upload = require('../middlewares/uploadImg.js')
-const { isLogged } = require('../middlewares/authenticate')
+const { isLogged, authenticate } = require('../middlewares/authenticate')
 //VIEWS
 router.get('/login', isLogged, userController.login)
 router.get('/register', isLogged, userController.viewRegister)
+router.get('/profile', authenticate, userController.profile)
 
 // API
 router.post('/register', upload.single('avatar'), validateRegister, userController.register)

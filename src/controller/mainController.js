@@ -9,7 +9,7 @@ const products = productsService.getProducts()
 const mainController = {
     home: (req, res) => {
         const mostVisited = products.filter(p => p.category === 'Más visitado')
-        console.log(mostVisited);
+        
         return res.render('home', { mostVisited })
     },
 
@@ -30,7 +30,7 @@ const mainController = {
 
     products: (req, res) => {
         const productos = productController.obtenerProductos();
-        console.log(productos);
+        
         return res.render("products", { productos })
     }
 }
