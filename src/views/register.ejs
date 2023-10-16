@@ -64,9 +64,9 @@
                         %>
                 </div>
 
-                <div class="div-form">
-                    <label for="avatar">Cargue su foto de perfil</label>
-                    <input name="avatar" type="file">
+                <div class="div-form file">
+                    <label for="avatar" class="label-file">Cargue su foto de perfil</label>
+                    <input name="avatar" type="file" class="load-file">
                     <% if (locals.errors && errors.avatar) { %>
                         <p class="msg-error">
                             <%= errors.avatar.msg %>
