@@ -525,6 +525,19 @@ footer .social ul li {
         right: 50px;
     }
 
+    /* ============== FORM =============================*/
+
+    .form{
+        width: 600px;
+        max-width: 700px;
+    }
+
+    .div-form{
+        width: 65%;
+    }
+
+    /* ============== FOOTER =============================*/
+
     .global-footer {
         flex-direction: row;
         flex-wrap: wrap;

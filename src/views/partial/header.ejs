@@ -5,10 +5,10 @@
         </div>
         <ul class="navbar-links">
             <li><a href="/productCart">Carrito</a></li>
-            <li><a href="/product/formCreateProduct">Ofertas</a></li>
             <li><a href="/product/products">Productos</a></li>
             <li><a href="/user/profile">Perfil</a></li>
             <% if (user) { %>
+                <li><a href="/product/formCreateProduct">Crear Producto</a></li>
                 <li><a href="/user/logout">Cerrar Sesión</a></li>
             <% } else { %>
                 <li><a href="/user/register">Registrarse</a></li>
