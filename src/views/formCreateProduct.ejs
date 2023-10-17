@@ -8,32 +8,63 @@
 
 <body>
     <%- include('partial/header') %>
-        <main class="mainCreateProduct">
-            <h1 class="titleFormCreateProduct">Cargar Nuevo Producto</h1>
-            <form class="formCreateProduct" action="/agregar-producto" method="post">
-                <label class="nameProduct" for="name">Nombre del producto:</label>
-                <input class="createProduct" type="text" id="name" name="name" required>
+    <main class="form-container"></main>
 
-                <label class="nameProduct" for="description">Descripción:</label>
-                <textarea class="textAreaCreateProduct" id="description" name="description" required></textarea>
-
-                <label for="image" class="custom-file-upload">
-                    <button type="button">Subir imagen</button>
-                </label>
-                <input class="createProduct" type="file" id="image" name="image" accept="image/*" required="">
-
-                <label class="nameProduct" for="category">Categoría:</label>
-                <input class="createProduct" type="text" id="category" name="category" required>
-
-                <label class="nameProduct" for="colors">Colores:</label>
-                <input class="createProduct" type="text" id="colors" name="colors" required>
-
-                <label class="nameProduct" for="price">Precio:</label>
-                <input class="createProduct" type="number" id="price" name="price" step="0.01" required>
-
-                <button class="btnPrimary" type="submit">Agregar Producto</button>
-            </form>
-        </main>
+    <form class="form" method="POST" action="/product/createProduct" enctype="multipart/form-data">
+        <h2 class="titulo-form-registro">Cargar producto</h2>
+    
+        <div class="div-form">
+            <label for="product-name">Nombre del producto</label>
+            <input type="text" id="product-name" name="productName" value="<%= locals.old ? old.productName : '' %>"
+                class="<%= (locals.errors && errors.productName) ? 'error-input' : '' %>">
+            <%- locals.errors && errors.productName ? `<p class="msg-error">${errors.productName.msg}</p>` : '' %>
+        </div>
+    
+        <div class="div-form">
+            <label for="description">Descripción</label>
+            <input type="text" id="description" name="description" value="<%= locals.old ? old.description : '' %>"
+                class="<%= (locals.errors && errors.description) ? 'error-input' : '' %>">
+            <%- locals.errors && errors.description ? `<p class="msg-error">${errors.description.msg}</p>` : '' %>
+        </div>
+    
+        <div class="div-form">
+            <label for="category">Categoría</label>
+            <input type="text" id="category" name="category" value="<%= locals.old ? old.category : '' %>"
+                class="<%= (locals.errors && errors.category) ? 'error-input' : '' %>">
+            <%- locals.errors && errors.category ? `<p class="msg-error">${errors.category.msg}</p>` : '' %>
+        </div>
+    
+        <div class="div-form">
+            <label for="color">Color</label>
+            <input type="text" id="color" name="color" value="<%= locals.old ? old.color : '' %>"
+                class="<%= (locals.errors && errors.color) ? 'error-input' : '' %>">
+            <%- locals.errors && errors.color ? `<p class="msg-error">${errors.color.msg}</p>` : '' %>
+        </div>
+    
+        <div class="div-form">
+            <label for="price">Precio</label>
+            <input type="number" id="price" name="price" value="<%= locals.old ? old.price : '' %>"
+                class="<%= (locals.errors && errors.price) ? 'error-input' : '' %>">
+            <%- locals.errors && errors.price ? `<p class="msg-error">${errors.price.msg}</p>` : '' %>
+        </div>
+    
+        <div class="div-form file">
+            <label for="product-img" class="label-file">Cargue la imagen del producto</label>
+            <input name="productImg" type="file" id="product-img" class="load-file">
+            <% if (locals.errors && errors.productImg) { %>
+                <p class="msg-error">
+                    <%= errors.productImg.msg %>
+                </p>
+            <% } %>
+        </div>
+    
+        <div class="div-form-bt">
+            <button type="submit" class="btnPrimary">Subir producto</button>
+            <button type="reset" class="btnPrimary">Cancelar</button>
+        </div>
+    
+    </form>
+    
         <%- include('partial/footer')%>
 </body>
 

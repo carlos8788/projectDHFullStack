@@ -37,10 +37,6 @@ a:active {
 
 
 
-.header {
-    background-color: var(--primary-yellow);
-
-}
 
 .navbar {
     display: flex;
@@ -57,7 +53,7 @@ a:active {
     height: 120px;
     background-size: contain;
     background-repeat: no-repeat;
-
+    background-position: center center;
 }
 
 .navbar-links {
@@ -85,7 +81,7 @@ a:active {
 }
 
 .search-form input[type="search"] {
-    width: 85%;
+    width: 95%;
     padding: 10px 0;
     border: none;
     margin: 0;
@@ -109,8 +105,12 @@ a:active {
     color: var(--primary-orange);
     cursor: pointer;
     border-radius: 0 8px 8px 0;
+    right: 10px;
 }
 
+.search-form button i {
+    margin: 0 auto;
+}
 
 /* ********************       BODY       ************************* */
 
@@ -159,13 +159,23 @@ section img.bannerGrande {
 
 /* ============== PRODUCTOS DESTACADOS =============================*/
 
+.title-productosDestacados {
+    text-align: center;
+    background-color: white;
+    margin: 10px 0 0 0;
+    padding: 10px 0 0 0;
+}
+
+
 .productosDestacados {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     background-color: white;
     width: 100%;
-    position: relative;
+    /* position: relative; */
     font-family: 'Roboto', sans-serif;
     height: auto;
     margin-bottom: 20px;
@@ -176,9 +186,9 @@ section img.bannerGrande {
     flex-direction: column;
     margin: 10px;
     width: 80%;
-    max-width: 520px;
-    padding: 1%;
+    max-width: 360px;
     padding: 15px;
+    border-radius: 8px;
     transition: box-shadow ease-in-out 0.3s;
 }
 
@@ -222,7 +232,7 @@ div.descripcion {
 
 div.comprar {
     background-color: black;
-    
+
 }
 
 /* Form register */
@@ -235,7 +245,7 @@ div.comprar {
 .form {
     display: flex;
     width: 300px;
-    
+
     margin: auto;
     padding: 2%;
     margin-top: 8%;
@@ -286,8 +296,6 @@ div.comprar {
 
 .load-file {
     padding: 10px 12px;
-    /* background-color: #f5f5f5; */
-    /* border: 1px solid #ccc; */
     display: inline-block;
     width: 100%;
     text-align: center;
@@ -323,12 +331,95 @@ div.comprar {
     margin: 5px 0;
 }
 
+/* ============== CART =============================*/
+
+.main-product-cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 95%;
+}
+
+.products-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.product-card {
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    max-width: 90%;
+}
+
+.product-card img {
+    width: 200px;
+}
+
+.btn-remove {
+    position: absolute;
+    border: none;
+    color: red;
+    right: 5px;
+
+}
+
+.product-details,
+.product-details p,
+.product-details h3,
+.product-details input {
+    background-color: white;
+}
+
+.summary {
+    margin: 50px 0;
+}
+
+.summary button {
+    width: 100%;
+
+}
+
+/* ============== Create Product =============================*/
+
+.mainCreateProduct {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.titleFormCreateProduct {
+    margin: 15px 0;
+    text-align: center;
+
+}
+
+.formCreateProduct {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+}
+
+
+
+
 /* **************** BTN-PRIMARY ************************* */
-.btnPrimary{
+.btnPrimary {
     border: none;
     border-radius: 8px;
     color: white;
     background-color: var(--primary-red);
+    padding: 2px 8px;
+    text-align: center;
 }
 
 
@@ -345,6 +436,10 @@ div.comprar {
     gap: 30px;
 }
 
+footer div h3 {
+    text-align: center;
+}
+
 footer .contacto,
 footer .socios,
 footer .social {
@@ -352,7 +447,7 @@ footer .social {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin: 10px auto;
+    margin: 10px 0;
     text-align: start;
 }
 
@@ -377,4 +472,110 @@ footer .social ul li {
     align-items: center;
     box-shadow: 0px 0px 10px 0px #333;
     border-radius: 50%;
+}
+
+
+/* ***************************************************************** */
+/* ********************       TABLET       ************************* */
+/* ***************************************************************** */
+
+@media (min-width: 768px) {
+
+    /* ============== NAVBAR =============================*/
+    .navbar .fas {
+        display: none;
+    }
+
+    .navbar-logo a img {
+        width: 250px;
+    }
+
+    .navbar {
+        margin: auto;
+        max-width: 1200px;
+    }
+
+    .fa-bars {
+        display: none;
+    }
+
+    .navbar-links {
+        display: flex;
+        margin-right: 10px;
+        gap: 30px;
+    }
+
+    .navbar-links li a {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .navbar-links li a:hover {
+        text-shadow: 5px 5px 20px var(--primary-orange);
+        transition: text-shadow 0.3s ease-in-out;
+    }
+
+
+    .search-form input[type="search"] {
+        margin: auto;
+        max-width: 85%;
+    }
+
+    .search-form button {
+        right: 50px;
+    }
+
+    .global-footer {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    footer p {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/* ***************************************************************** */
+/* ********************     Notebooks      ************************* */
+/* ***************************************************************** */
+
+@media (min-width: 1024px) {
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        /* justify-content: space-between; */
+        align-items: center;
+
+        gap: 20px;
+        padding: 15px 10px;
+        width: 90%;
+    }
+
+    .navbar-logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-logo-img {
+        width: 200px;
+    }
+
+    .global-footer {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .form-search {
+        display: flex;
+    }
+
+    .main-product-cart {
+        /* margin: auto; */
+        max-width: 100%;
+    }
+
+    .product-card {
+        width: 380px;
+    }
 }

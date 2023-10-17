@@ -1,57 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="es">
 
 <head>
     <%- include('partial/head') %>
-    <title>Product Cart</title>
+        <title>Product Cart</title>
 </head>
 
 <body>
     <%- include('partial/header') %>
 
-    <main class="main-product-cart">
-        <h1>Tu Carrito</h1>
-        <div class="product-card">
-            <img src="images\Naike.jpg" alt="Producto" class="product-image">
-            <div class="product-details">
-                <h3>Nike Grip Push Up</h3>
-                <p>Precio unitario: $18.000</p>
-                <input type="number" value="1">
-            </div>
-            <button class="btn-remove"><i class="fas fa-trash"></i></button>
-        </div>
+        <main class="main-product-cart">
 
-        <div class="product-card">
-            <img src="images\Prote.webp" alt="Producto" class="product-image">
-            <div class="product-details">
-                <h3>Whey Proteina x930g</h3>
-                <p>Precio unitario: $15.000</p>
-                <input type="number" value="1">
-            </div>
-            <button class="btn-remove"><i class="fas fa-trash"></i></button>
-        </div>
+            <h1>Tu Carrito</h1>
+            <div class="products-cart">
+                <div class="product-card">
+                    <button class="btn-remove"><i class="fas fa-trash"></i></button>
+                    <img src="images\Naike.jpg" alt="Producto" class="product-image">
+                    <div class="product-details">
+                        <h3>Nike Grip Push Up</h3>
+                        <p>Precio unitario: $18.000</p>
+                        <input type="number" value="1">
+                    </div>
+                </div>
 
-        <div class="product-card">
-            <img src="images\Barra.jpg" alt="Producto" class="product-image">
-            <div class="product-details">
-                <h3>Barra cromada</h3>
-                <p>Precio unitario: $50.000</p>
-                <input type="number" value="1">
+                <div class="product-card">
+                    <button class="btn-remove"><i class="fas fa-trash"></i></button>
+                    <img src="images\Prote.webp" alt="Producto" class="product-image">
+                    <div class="product-details">
+                        <h3>Whey Proteina x930g</h3>
+                        <p>Precio unitario: $15.000</p>
+                        <input type="number" value="1">
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <button class="btn-remove"><i class="fas fa-trash"></i></button>
+                    <img src="images\Barra.jpg" alt="Producto" class="product-image">
+                    <div class="product-details">
+                        <h3>Barra cromada</h3>
+                        <p>Precio unitario: $50.000</p>
+                        <input type="number" value="1">
+                    </div>
+                </div>
             </div>
-            <button class="btn-remove"><i class="fas fa-trash"></i></button>
-        </div>
-        <div class="summary">
-            <h2 class="summary-title">Resumen del pedido</h2>
-            <p>Cantidad total de productos: 3</p>
-            <p>Costo de entrega: $0.00</p>
-            <div class="total">
-                <p>Total: $83.000</p>
+
+            <div class="summary">
+                <h2 class="summary-title">Resumen del pedido</h2>
+                <p>Cantidad total de productos: 3</p>
+                <p>Costo de entrega: $0.00</p>
+                <div class="total">
+                    <p>Total: $83.000</p>
+                </div>
+                <button class="btnPrimary">Ir a pagar</button>
             </div>
-            <button class="btnPrimary">Ir a pagar</button>
-        </div>
-    </main>
-    
-    <%- include('partial/footer') %>
+        </main>
+
+        <%- include('partial/footer') %>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-const productsController = require("./productsController") //importamos controlador de productos
+// const productsController = require("./productsController") //importamos controlador de productos
 const productsService = require('../services/product.services')
 
 const products = productsService.getProducts()
@@ -15,10 +15,14 @@ const productController = {
     formCreateProduct: (req, res) => {
         return res.render('formCreateProduct')
     },
+    createProduct: (req, res) => {
+        return res.json({
+            product: 'product'
+        })
+    },
 
     products: (req, res) => {
-        const productos = productsController.obtenerProductos();
-        console.log(productos);
+        const productos = []
         return res.render("products", { productos })
     }
 }

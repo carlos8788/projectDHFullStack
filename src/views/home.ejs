@@ -3,69 +3,79 @@
 
 <head>
 
-    <%- include('partial/head') %>
+  <%- include('partial/head') %>
 </head>
 
 <body>
-    <%- include('partial/header') %>
+  <%- include('partial/header') %>
 
 
-        <main class="home">
+    <main class="home">
 
-            <div id="carouselExampleFade" class="carousel slide carousel-fade">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="/images/ejercicio.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="/images/ejercicio2.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="/images/ejercicio3.jpg" class="d-block w-100" alt="...">
-                  </div>
+      <div id="carouselExampleFade" class="carousel slide carousel-fade">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/images/ejercicio.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/images/ejercicio2.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="/images/ejercicio3.jpg" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <section class="enlaces">
+        <a href="#" class="">INDUMENTARIA</a>
+        <a href="#" class="">FIXTURE</a>
+        <a href="#" class="">NOTICIAS</a>
+        <a href="#" class="">CONTACTO</a>
+      </section>
+
+      <section>
+        <img id="" src="/images/monumental.jpg" class="bannerGrande" alt="Monumental">
+      </section>
+
+      <section class="spamLogin">
+        <div><a href="/register">Registrarse</a></div>
+      </section>
+
+      <section id="sport" class="">
+        <h2 class="title-productosDestacados">Productos Destacados</h2>
+        <div class="productosDestacados">
+          <% mostVisited.forEach(producto=> { %>
+            <div class="elemento">
+              <img src="<%= producto.image %>" alt="<%= producto.name %>" />
+              <div class="caja">
+                <div class="nombre"><b>
+                    <%= producto.name %>
+                  </b></div>
+                <div class="descripcion">
+                  <%= producto.description %>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
+                <div class="color">Color: <%= producto.color || 'No especificado' %>
+                </div>
+                <div class="precio">$<%= producto.price %>
+                </div>
               </div>
+              <a href="/product/productDetail/<%= producto.id %>" class="btnPrimary">Añadir al carrito</a>
+            </div>
+            <% }); %>
+        </div>
 
-            <section class="enlaces">
-                <a href="#" class="">INDUMENTARIA</a>
-                <a href="#" class="">FIXTURE</a>
-                <a href="#" class="">NOTICIAS</a>
-                <a href="#" class="">CONTACTO</a>
-            </section>
+      </section>
+    </main>
 
-            <section>
-                <img id="" src="/images/monumental.jpg" class="bannerGrande" alt="Monumental">
-            </section>
-
-            <section class="spamLogin">
-                <div><a href="/register">Registrarse</a></div>
-            </section>
-
-            <section id="sport" class="productosDestacados">
-                <% mostVisited.forEach(producto => { %>
-                    <div class="elemento">
-                        <img src="<%= producto.image %>" alt="<%= producto.name %>" />
-                        <div class="caja">
-                            <div class="nombre"><b><%= producto.name %></b></div>
-                            <div class="descripcion"><%= producto.description %></div>
-                            <div class="color">Color: <%= producto.color || 'No especificado' %></div>
-                            <div class="precio">$<%= producto.price %></div>
-                        </div>
-                        <a href="/product/productDetail/<%= producto.id %>" class="btnPrimary">Añadir al carrito</a>
-                    </div>
-                <% }); %>
-            </section>
-        </main>
-
-        <%- include('partial/footer')%>
+    <%- include('partial/footer')%>
 
 </body>
 

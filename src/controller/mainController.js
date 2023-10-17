@@ -1,4 +1,4 @@
-const productController = require("./productsController") //importamos controlador de productos
+// const productController = require("./productsController") //importamos controlador de productos
 const productsService = require('../services/product.services')
 
 
@@ -29,7 +29,7 @@ const mainController = {
     },
 
     products: (req, res) => {
-        const productos = productController.obtenerProductos();
+        const productos = []
         
         return res.render("products", { productos })
     }
