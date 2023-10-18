@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
     validateRegister: [
         body('username').notEmpty().withMessage('Se debe completar el campo nombre de usuario'),
-        body('nombre').notEmpty().withMessage('Se debe completar el campo nombre'),
+        body('nombrnamee').notEmpty().withMessage('Se debe completar el campo nombre'),
         body('apellido').notEmpty().withMessage('Se debe completar el campo apellido'),
         body('email').notEmpty().isEmail().withMessage('Se debe completar el campo email'),
         body('re_email').notEmpty().isEmail().withMessage('Los correos deben ser iguales'),
@@ -16,7 +16,8 @@ module.exports = {
             if(!file) {
                 throw new Error('Debes subir una imagen')
             } else{
-                const fileExtension = path.extname(file.originalname)
+                const fileExtension = path.extname(file.originalname).slice(1)
+                
                 if(!acceptedExtensions.includes(fileExtension)) throw new Error(`El formato del archivo debe ser ${acceptedExtensions.join(',')}`)
             }
             

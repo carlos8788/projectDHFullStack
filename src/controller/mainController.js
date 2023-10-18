@@ -1,10 +1,10 @@
 // const productController = require("./productsController") //importamos controlador de productos
-const productsService = require('../services/product.services')
+// const productsService = require('../services/product.services')
 
 
 
 
-const products = productsService.getProducts()
+// const products = productsService.getProducts()
 
 const mainController = {
     home: (req, res) => {

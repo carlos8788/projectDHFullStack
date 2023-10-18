@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports = {
     viewRegister: (req, res) => {
-        console.log(req.user);
+        
         return res.render('register')
     },
 
@@ -11,6 +11,8 @@ module.exports = {
         const errors = validationResult(req)
         const user = req.body
         console.log(user);
+        console.log(req.file.path);
+
         if (!errors.isEmpty()) {
             console.log(errors.array());
             return res.render(
@@ -20,6 +22,11 @@ module.exports = {
                     old: req.body
                 })
         }
+
+        const newUser = {
+            
+        }
+
         return res.render('login')
     },
 

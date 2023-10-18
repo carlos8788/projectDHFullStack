@@ -15,24 +15,24 @@
                 <h2 class="titulo-form-registro">Formulario de Registro</h2>
 
                 <div class="div-form">
-                    <label for="nombre">Nombre de usuario </label>
-                    <input type="text" id="nombre" name="username" value="<%= locals.old ? old.username : '' %>"
+                    <label for="username">Nombre de usuario </label>
+                    <input type="text" id="username" name="username" value="<%= locals.old ? old.username : '' %>"
                         class="<%= (locals.errors && errors.username) ? 'error-input' : '' %>">
                     <%- locals.errors && errors.username ? `<p class="msg-error">${errors.username.msg}</p>` : '' %>
                 </div>
 
                 <div class="div-form">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" value="<%= locals.old ? old.nombre : '' %>"
-                        class="<%= (locals.errors && errors.nombre) ? 'error-input' : '' %>">
-                    <%- locals.errors && errors.nombre ? `<p class="msg-error">${errors.nombre.msg}</p>` : '' %>
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" value="<%= locals.old ? old.name : '' %>"
+                        class="<%= (locals.errors && errors.name) ? 'error-input' : '' %>">
+                    <%- locals.errors && errors.name ? `<p class="msg-error">${errors.name.msg}</p>` : '' %>
                 </div>
 
                 <div class="div-form">
-                    <label for="apellido">Apellido</label>
-                    <input type="text" id="apellido" name="apellido" value="<%= locals.old ? old.apellido : '' %>"
-                        class="<%= (locals.errors && errors.apellido) ? 'error-input' : '' %>">
-                    <%- locals.errors && errors.apellido ? `<p class="msg-error">${errors.apellido.msg}</p>` : '' %>
+                    <label for="last_name">Apellido</label>
+                    <input type="text" id="last_name" name="last_name" value="<%= locals.old ? old.last_name : '' %>"
+                        class="<%= (locals.errors && errors.last_name) ? 'error-input' : '' %>">
+                    <%- locals.errors && errors.last_name ? `<p class="msg-error">${errors.last_name.msg}</p>` : '' %>
                 </div>
 
                 <div class="div-form">
