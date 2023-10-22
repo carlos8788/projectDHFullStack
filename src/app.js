@@ -27,6 +27,8 @@ app.use('/product', routerProduct)
 app.use('/user', routerUser)
 
 app.listen(PORT, ()=>{
+    // sequelize.sync()
+
     console.log(`PORT: ${PORT}`);
     
 });

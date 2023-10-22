@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    const alias = "Carts";
+    const alias = "Cart";
     const cols = {
         id_cart: {
             type: dataTypes.INTEGER,
@@ -10,7 +10,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'Users',
+                model: 'User',
                 key: 'id_user'
             }
         },
@@ -25,13 +25,14 @@ module.exports = (sequelize, dataTypes) => {
     }
 
     const config = {
-        timestamps: false
+        timestamps: false,
+        tableName: 'cart',
     }
 
     const Cart = sequelize.define(alias, cols, config);
 
     Cart.associate = function(models) {
-        Cart.belongsTo(models.Users, {
+        Cart.belongsTo(models.User, {
             as: 'user',
             foreignKey: 'id_user'
         });

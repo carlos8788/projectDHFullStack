@@ -4,13 +4,13 @@ const { root } = require('../utils/rootPath')
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(root, '..', 'public', 'images', 'profiles'))
+        const folder = (req.path === '/register') ? 'profiles' : 'products';
+        cb(null, path.join(root, '..', 'public', 'images', folder))
     },
     filename: (req, file, cb) => {
         try {
-            console.log(file);
-            const fileName = `${Date.now()}_img${path.extname(file.originalname)}`;
-            console.log(req.user);
+            const name = (req.path === '/register') ? req.body.username : req.body.productName;
+            const fileName = `${name}_img${path.extname(file.originalname)}`;
             cb(null, fileName)
         } catch (error) {
             console.log(error);

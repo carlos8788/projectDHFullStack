@@ -1,13 +1,15 @@
-// const productController = require("./productsController") //importamos controlador de productos
-// const productsService = require('../services/product.services')
-
-
-
-
-// const products = productsService.getProducts()
+// const sequelize = require('../database/config/config');
+// const Sequelize = require('sequelize');  // Asegúrate de requerir Sequelize para usar DataTypes
+const db = require('../database/models/')
+const sequelize = db.sequelize
 
 const mainController = {
-    home: (req, res) => {
+    home: async (req, res) => {
+        // const mostVisited = products.filter(p => p.category === 'Más visitado')
+        const products = await db.Product.findAll()
+        // const test = await db.Product
+        // console.log(test);
+        // const products = []
         const mostVisited = products.filter(p => p.category === 'Más visitado')
         
         return res.render('home', { mostVisited })
@@ -15,7 +17,7 @@ const mainController = {
 
     productDetail: (req, res) => {
         const { id } = req.params
-        const producto = products.find(p => p.id === id)
+        // const producto = products.find(p => p.id === id)
         return res.render('productDetail', { producto })
     },
 

@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    const alias = "CartDetails";
+    const alias = "CartDetail";
     const cols = {
         id_cart_detail: {
             type: dataTypes.INTEGER,
@@ -10,7 +10,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'Carts',
+                model: 'Cart',
                 key: 'id_cart'
             }
         },
@@ -18,7 +18,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'Products',
+                model: 'Product',
                 key: 'id_product'
             }
         },
@@ -33,18 +33,19 @@ module.exports = (sequelize, dataTypes) => {
     }
 
     const config = {
-        timestamps: false
+        timestamps: false,
+        tableName: 'cart_detail',
     }
 
     const CartDetail = sequelize.define(alias, cols, config);
 
     CartDetail.associate = function(models) {
-        CartDetail.belongsTo(models.Carts, {
+        CartDetail.belongsTo(models.Cart, {
             as: 'cart',
             foreignKey: 'id_cart'
         });
         
-        CartDetail.belongsTo(models.Products, {
+        CartDetail.belongsTo(models.Product, {
             as: 'product',
             foreignKey: 'id_product'
         });

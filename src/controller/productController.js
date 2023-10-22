@@ -16,6 +16,8 @@ const productController = {
         return res.render('formCreateProduct')
     },
     createProduct: (req, res) => {
+        const product = req.body
+        console.log(product);
         return res.json({
             product: 'product'
         })

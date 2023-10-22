@@ -1,5 +1,7 @@
+// const sequelize = require('../database/config/config');
+
 module.exports = (sequelize, dataTypes) => {
-    const alias = "Products";
+    const alias = "Product";
     const cols = {
         id_product: {
             type: dataTypes.INTEGER,
@@ -30,7 +32,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'Categories',
+                model: 'Category',
                 key: 'id_category'
             }
         },
@@ -38,7 +40,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'Colors',
+                model: 'Color',
                 key: 'id_color'
             }
         },
@@ -46,7 +48,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'Sizes',
+                model: 'Size',
                 key: 'id_size'
             }
         },
@@ -54,32 +56,33 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'Brands',
+                model: 'Brand',
                 key: 'id_brand'
             }
         }
     }
 
     const config = {
-        timestamps: false
+        timestamps: false,
+        tableName: 'product'
     }
 
     const Product = sequelize.define(alias, cols, config);
 
     Product.associate = function(models) {
-        Product.belongsTo(models.Categories, {
+        Product.belongsTo(models.Category, {
             as: 'category',
             foreignKey: 'id_category'
         });
-        Product.belongsTo(models.Colors, {
+        Product.belongsTo(models.Color, {
             as: 'color',
             foreignKey: 'id_color'
         });
-        Product.belongsTo(models.Sizes, {
+        Product.belongsTo(models.Size, {
             as: 'size',
             foreignKey: 'id_size'
         });
-        Product.belongsTo(models.Brands, {
+        Product.belongsTo(models.Brand, {
             as: 'brand',
             foreignKey: 'id_brand'
         });
