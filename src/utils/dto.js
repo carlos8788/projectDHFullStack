@@ -1,5 +1,5 @@
 const path = require('path')
-const constructProductFromRequest = (req) => {
+const constructProductFromRequest = req => {
     const {
         productName,
         description,
@@ -30,12 +30,28 @@ const constructProductFromRequest = (req) => {
     };
 };
 
-const extractImagePath = (fullPath) => {
+const extractImagePath = fullPath => {
     const partPath = fullPath.split('\\');
     const pathImgParts = partPath.splice(5, partPath.length);
     return path.join(...pathImgParts);
 };
 
+const toProductData = product => {
+    return {
+        id_product: product.id_product,
+        name_product: product.name_product,
+        description: product.description,
+        price: product.price,
+        stock: product.stock,
+        image: product.image,
+        category: product.category.name,
+        color: product.color.name,
+        size: product.size.name,
+        brand: product.brand.name
+    };
+}
+
 module.exports = {
-    constructProductFromRequest
+    constructProductFromRequest,
+    toProductData
 };

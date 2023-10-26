@@ -37,10 +37,10 @@
                         <div class="caja">
                             <div class="nombre"><b><%= producto.name_product %></b></div>
                             <div class="descripcion"><%= producto.description %></div>
-                            <div class="color">Color: <%= producto.id_color || 'No especificado' %></div>
-                            <div class="color">Tamaño: <%= producto.id_size || 'No especificado' %></div>
-                            <div class="color">Marca: <%= producto.id_brand || 'No especificado' %></div>
-                            <div class="color">Categoría: <%= producto.id_category || 'No especificado' %></div>
+                            <div class="color">Color: <%= producto.color || 'No especificado' %></div>
+                            <div class="color">Tamaño: <%= producto.size || 'No especificado' %></div>
+                            <div class="color">Marca: <%= producto.brand || 'No especificado' %></div>
+                            <div class="color">Categoría: <%= producto.category || 'No especificado' %></div>
                             <div class="precio">$<%= producto.price %></div>
                         </div>
                         <a href="/product/productDetail/<%= producto.id %>" class="btnPrimary">Añadir al carrito</a>
