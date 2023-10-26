@@ -5,8 +5,8 @@ const {authenticate} = require('../middlewares/authenticate')
 const upload = require('../middlewares/uploadImg.js')
 
 router.get('/productDetail/:id', controller.productDetail)
-router.get('/formCreateProduct', authenticate, upload.single('productImg'), controller.formCreateProduct)
-router.post('/createProduct', controller.createProduct)
+router.get('/formCreateProduct', authenticate, controller.formCreateProduct)
+router.post('/createProduct', upload.single('productImg'), controller.createProduct)
 router.get('/products', controller.products)
 
 module.exports = router

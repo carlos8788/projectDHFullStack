@@ -1,31 +1,72 @@
-// const productsController = require("./productsController") //importamos controlador de productos
-// const productsService = require('../services/product.services')
+const db = require('../database/models/')
+const sequelize = db.sequelize
 
-// const products = productsService.getProducts()
-
+const { constructProductFromRequest } = require('../utils/dto');
 const productController = {
-
+    
     productDetail: (req, res) => {
         const { id } = req.params
         // const producto = products.find(p => p.id === id)
 
-        return res.render('productDetail', {producto})
+        return res.render('productDetail', { producto })
     },
 
-    formCreateProduct: (req, res) => {
-        return res.render('formCreateProduct')
-    },
-    createProduct: (req, res) => {
-        const product = req.body
-        console.log(product);
-        return res.json({
-            product: 'product'
-        })
+    formCreateProduct: async (req, res) => {
+        try {
+            const [colors, categories, sizes, brands] = await Promise.all([
+                db.Color.findAll({ raw: true }),
+                db.Category.findAll({ raw: true }),
+                db.Size.findAll({ raw: true }),
+                db.Brand.findAll({ raw: true })
+            ]);
+
+            const options = {
+                colors,
+                categories,
+                sizes,
+                brands
+            };
+
+            // Si necesitas revisar las opciones en consola:
+            console.log(options);
+
+            return res.render('formCreateProduct', options);
+
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            // Aquí puedes manejar el error, por ejemplo, renderizar una página de error, etc.
+            return res.status(500).send("Internal Server Error");
+        }
     },
 
-    products: (req, res) => {
-        const productos = []
-        return res.render("products", { productos })
+
+
+    createProduct: async (req, res) => {
+        try {
+            const productData = constructProductFromRequest(req);
+
+            const query = await db.Product.create(productData);
+
+            console.log(query);
+
+            return res.json(query);
+        } catch (error) {
+            console.error("Error creating product:", error);
+            return res.status(500).json({ error: "Failed to create product" });
+        }
+    },
+
+    products: async (req, res) => {
+        const products = await db.Product.findAll({
+            include: [
+                { model: db.Category, attributes: ['name'] },
+                { model: db.Color, attributes: ['name'] },
+                { model: db.Size, attributes: ['name'] },
+                { model: db.Brand, attributes: ['name'] }
+            ]
+        });
+        console.log(products);
+        return res.render("products", { products })
     }
 }
 
