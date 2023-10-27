@@ -50,7 +50,8 @@ const productController = {
 
             console.log(query);
 
-            return res.json(query);
+            // return res.json(query);
+            return res.redirect('/product/formCreateProduct');
         } catch (error) {
             console.error("Error creating product:", error);
             return res.status(500).json({ error: "Failed to create product" });

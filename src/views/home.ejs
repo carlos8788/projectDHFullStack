@@ -52,17 +52,23 @@
       <section id="sport" class="">
         <h2 class="title-productosDestacados">Productos Destacados</h2>
         <div class="productosDestacados">
-          <% mostVisited.forEach(producto=> { %>
+          <% products.forEach(producto=> { %>
             <div class="elemento">
               <img src="<%= producto.image %>" alt="<%= producto.name %>" />
               <div class="caja">
                 <div class="nombre"><b>
-                    <%= producto.name %>
+                    <%= producto.name_product %>
                   </b></div>
                 <div class="descripcion">
                   <%= producto.description %>
                 </div>
                 <div class="color">Color: <%= producto.color || 'No especificado' %>
+                </div>
+                <div class="color">Tamaño: <%= producto.size || 'No especificado' %>
+                </div>
+                <div class="color">Marca: <%= producto.brand || 'No especificado' %>
+                </div>
+                <div class="color">Categoría: <%= producto.category || 'No especificado' %>
                 </div>
                 <div class="precio">$<%= producto.price %>
                 </div>
