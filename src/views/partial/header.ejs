@@ -1,7 +1,9 @@
 <header class="header">
     <nav class="navbar">
         <div class="navbar-logo">
-            <a href="/"><div class="navbar-logo-img"></div></a>
+            <a href="/">
+                <div class="navbar-logo-img"></div>
+            </a>
         </div>
         <ul class="navbar-links">
             <li><a href="/productCart">Carrito</a></li>
@@ -10,18 +12,19 @@
             <% if (user) { %>
                 <li><a href="/product/formCreateProduct">Crear Producto</a></li>
                 <li><a href="/user/logout">Cerrar Sesión</a></li>
-            <% } else { %>
-                <li><a href="/user/register">Registrarse</a></li>
-                <li><a href="/user/login">Iniciar Sesión</a></li>
-            <% } %>
-            
+                <% } else { %>
+                    <li><a href="/user/register">Registrarse</a></li>
+                    <li><a href="/user/login">Iniciar Sesión</a></li>
+                    <% } %>
+
         </ul>
         <i class="fas fa-bars"></i>
     </nav>
     <div class="search-form">
-        <form class="form-search">
-            <input type="search" placeholder="Buscar">
-            <button type="submit"><i class="fas fa-search"></i></button>
+        <form class="d-flex justify-center" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+
     </div>
 </header>

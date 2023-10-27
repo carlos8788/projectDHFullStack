@@ -848,6 +848,12 @@ select {
         font-weight: 700;
     }
 
+    .search-form {
+        display: flex;
+        justify-content: center;
+        max-width: 75%;
+    }
+
     .form {
         width: 50%;
         margin: 20px auto;
