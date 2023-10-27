@@ -517,14 +517,14 @@ footer .social ul li {
     }
 
 
-    .search-form input[type="search"] {
+    /* .search-form input[type="search"] {
         margin: auto;
         max-width: 85%;
     }
 
     .search-form button {
         right: 50px;
-    }
+    } */
 
     /* ============== FORM =============================*/
 
@@ -580,9 +580,9 @@ footer .social ul li {
         flex-wrap: wrap;
     }
 
-    .form-search {
+    /* .form-search {
         display: flex;
-    }
+    } */
 
     .main-product-cart {
         /* margin: auto; */
