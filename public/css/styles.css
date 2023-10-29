@@ -599,4 +599,38 @@ footer .social ul li {
     .product-card {
         width: 380px;
     }
+    .dropdown-div{
+        position: relative;
+        background-color: #f78d59;
+    }
+    .menu-dropdown{
+        position: absolute;
+        z-index: 1000;
+        /* border: 1px solid black; */
+        background-color: #333;
+        border-radius: 2px;
+        width: 100px;
+        display: none;
+        color: wheat;
+    }
+    .menu-dropdown li {
+        /* border-radius: 20px 20px 20px 20px; */
+        background-color: #333;
+        color: wheat;
+        list-style-type: none;
+    }
+    .menu-dropdown li a {
+        background-color: #333;
+        color: wheat;
+    }
+    .dropdown-div:hover .menu-dropdown{
+        display: block;
+    }
+
+    .menu-dropdown li:hover a{
+        /* border-radius: 0; */
+        color: #32ac4d;
+    }
+
+    
 }
