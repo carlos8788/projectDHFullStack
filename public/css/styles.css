@@ -124,7 +124,52 @@ a:active {
 }
 
 /* ********************       BODY       ************************* */
+.carousel-container {
+    height: 350px;
+    width: 90%;
+    margin: auto;
+    position: relative;
+}
 
+.effect {
+    background: rgb(0, 0, 0);
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.911) 46%, rgba(29, 16, 16, 0.986) 100%);
+    height: 270px;
+    z-index: 10000;
+    position: absolute;
+}
+
+.carousel {
+    border-radius: 4px;
+}
+
+
+.carousel-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 270px;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.089) 25%, rgba(0, 0, 0, 0.986) 100%);
+    z-index: 100;
+    
+}
+
+
+.carousel-item img {
+    height: 270px;
+}
+
+.bannerGrande {
+    background-image: url('/images/banner.png');
+    height: 150px;
+    /* width: 100%; */
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* margin-top: 50px; */
+    /* margin-bottom: 0; */
+}
 
 .home .enlaces {
     display: flex;

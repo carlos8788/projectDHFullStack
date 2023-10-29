@@ -77,7 +77,7 @@
                 <div class="descripcion">
                   <%= producto.description %>
                 </div>
-                <div class="color">Color: <%= producto.color || 'No especificado' %>
+                <div class="color">Color: <%= producto.color.toUpperCase() || 'No especificado' %>
                 </div>
                 <div class="color">Tamaño: <%= producto.size || 'No especificado' %>
                 </div>
