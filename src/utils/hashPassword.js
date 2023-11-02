@@ -2,8 +2,11 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 const hashPassword = async (password) => {
-    let hash = await bcrypt.hash(password, 10)
-    return hash
+    if(password.length > 8){
+        let hash = await bcrypt.hash(password, 10)
+        return hash
+    }
+    return 'Password not valid'
 }
 
 
