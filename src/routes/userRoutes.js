@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const userController = require('../controller/userController')
-const { validateRegister } = require('../middlewares/validations')
+const { validateRegister, validateLogin } = require('../middlewares/validations')
 const upload = require('../middlewares/uploadImg.js')
 const { isLogged, authenticate } = require('../middlewares/authenticate')
 //VIEWS
