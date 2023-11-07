@@ -64,15 +64,16 @@
                         %>
                 </div>
 
-                <div class="div-form file">
-                    <label for="avatar" class="label-file">Cargue su foto de perfil</label>
-                    <input name="avatar" type="file" class="load-file">
+                <div class="mb-3">
+                    <label for="avatar" class="form-label label-file">Cargue su foto de perfil</label>
+                    <input class="form-control" type="file" id="avatar" name="avatar">
                     <% if (locals.errors && errors.avatar) { %>
                         <p class="msg-error">
                             <%= errors.avatar.msg %>
                         </p>
                         <% } %>
                 </div>
+
 
 
                 <div class="div-form-bt">
@@ -83,7 +84,7 @@
             </form>
         </main>
 
-
+        <script src="/js/register.js"></script>
         <%- include('partial/footer') %>
 </body>
 
