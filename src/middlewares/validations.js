@@ -4,8 +4,8 @@ const path = require('path');
 module.exports = {
     validateRegister: [
         body('username').notEmpty().withMessage('Se debe completar el campo nombre de usuario'),
-        body('nombrnamee').notEmpty().withMessage('Se debe completar el campo nombre'),
-        body('apellido').notEmpty().withMessage('Se debe completar el campo apellido'),
+        body('first_name').notEmpty().withMessage('Se debe completar el campo nombre'),
+        body('last_name').notEmpty().withMessage('Se debe completar el campo apellido'),
         body('email').notEmpty().isEmail().withMessage('Se debe completar el campo email'),
         body('re_email').notEmpty().isEmail().withMessage('Los correos deben ser iguales'),
         body('password').notEmpty().withMessage('Se debe completar el campo password'),

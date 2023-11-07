@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 const hashPassword = async (password) => {
     if(password.length > 8){

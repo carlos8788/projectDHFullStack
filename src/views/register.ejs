@@ -22,10 +22,10 @@
                 </div>
 
                 <div class="div-form">
-                    <label for="name">Nombre</label>
-                    <input type="text" id="name" name="name" value="<%= locals.old ? old.name : '' %>"
-                        class="<%= (locals.errors && errors.name) ? 'error-input' : '' %>">
-                    <%- locals.errors && errors.name ? `<p class="msg-error">${errors.name.msg}</p>` : '' %>
+                    <label for="first_name">Nombre</label>
+                    <input type="text" id="first_name" name="first_name" value="<%= locals.old ? old.first_name : '' %>"
+                        class="<%= (locals.errors && errors.first_name) ? 'error-input' : '' %>">
+                    <%- locals.errors && errors.first_name ? `<p class="msg-error">${errors.first_name.msg}</p>` : '' %>
                 </div>
 
                 <div class="div-form">

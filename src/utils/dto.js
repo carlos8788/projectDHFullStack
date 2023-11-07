@@ -32,7 +32,8 @@ const constructProductFromRequest = req => {
 
 const extractImagePath = fullPath => {
     const partPath = fullPath.split('\\');
-    const pathImgParts = partPath.splice(5, partPath.length);
+    const index = partPath.findIndex(text => text === 'images')
+    const pathImgParts = partPath.splice(index, partPath.length);
     return path.join(...pathImgParts);
 };
 
@@ -53,5 +54,6 @@ const toProductData = product => {
 
 module.exports = {
     constructProductFromRequest,
-    toProductData
+    toProductData,
+    extractImagePath
 };

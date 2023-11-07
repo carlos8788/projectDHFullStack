@@ -1,9 +1,9 @@
 const { validationResult } = require('express-validator')
 const jwt = require('jsonwebtoken');
-
+const {extractImagePath} = require('../utils/dto')
 module.exports = {
     viewRegister: (req, res) => {
-        
+
         return res.render('register')
     },
 
@@ -11,7 +11,8 @@ module.exports = {
         const errors = validationResult(req)
         const user = req.body
         console.log(user);
-        console.log(req.file.path);
+
+        console.log(extractImagePath(req.file.path));
 
         if (!errors.isEmpty()) {
             console.log(errors.array());
@@ -24,9 +25,14 @@ module.exports = {
         }
 
         const newUser = {
-            
+            username: user.username,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            email: user.email,
+            password: user.password,
+            avatar: user.avatar
         }
-
+        console.log('Se completó el registro')
         return res.render('login')
     },
 
@@ -54,9 +60,9 @@ module.exports = {
         res.redirect('/');
     },
     profile: (req, res) => {
-        if(!req.user) return res.redirect('/user/login')
+        if (!req.user) return res.redirect('/user/login')
         console.log(req.user);
-        return res.render('profile', {user: req.user})
+        return res.render('profile', { user: req.user })
     },
 
     logout: (req, res) => {
