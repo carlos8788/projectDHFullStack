@@ -8,6 +8,7 @@ const { isLogged, authenticate } = require('../middlewares/authenticate')
 router.get('/login', isLogged, userController.login)
 router.get('/register', isLogged, userController.viewRegister)
 router.get('/profile', authenticate, userController.profile)
+router.post('/login', validateLogin, userController.loginProcess);
 
 // API
 router.post('/register', upload.single('avatar'), validateRegister, userController.register)

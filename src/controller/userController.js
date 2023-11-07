@@ -34,12 +34,15 @@ module.exports = {
         return res.render('login')
     },
 
-    loginProcess: (req, res) => {
-
-        let user = req.body
-
-        console.log(user);
-
+   loginProcess: (req, res) => {
+        const errors = validationResult(req);
+        
+        if (!errors.isEmpty()) {
+            return res.render('login', {
+                errors: errors.array(),
+                old: req.body
+            });
+        }
         // const userWithoutPassword = {
         //     id: user.id,
         //     username: user.username,

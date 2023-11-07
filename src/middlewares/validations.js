@@ -24,4 +24,8 @@ module.exports = {
             return true
         })
     ],
+    validateLogin: [
+        body('email').notEmpty().isEmail().withMessage('Se debe completar el campo email').escape(),
+        body('password').notEmpty().withMessage('Se debe completar el campo password').escape(),
+    ],
 }
