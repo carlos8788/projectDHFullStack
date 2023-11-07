@@ -13,6 +13,7 @@ const hashPassword = async (password) => {
     // return 'Password not valid'
 }
 
+const verifyPassword = async (password, passwordDB) => await bcrypt.compare(password, passwordDB)
 
 // const password = 'CONTRA';
 // const hash = '';
@@ -25,5 +26,6 @@ const hashPassword = async (password) => {
 // console.log(rsul)
 
 module.exports = {
-    hashPassword
+    hashPassword,
+    verifyPassword
 }
