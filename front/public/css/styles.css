@@ -126,7 +126,37 @@ a:active {
     height: 350px;
     width: 90%;
     margin: auto;
+    display: flex;
     position: relative;
+    justify-content: center;
+}
+
+.carousel-button{
+    background-color: rgba(61, 63, 63, 0.158);
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    font-size: xx-large;
+    color: rgba(255, 255, 255, 0.507);
+    transition: background-color, color ease-in-out 0.2s;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.button-rigth{
+    top: 50%;
+    right: 5px;
+}
+
+.button-left{
+    top: 50%;
+    left: 5px;
+}
+
+.carousel-button:hover{
+    background-color: rgba(61, 63, 63, 0.623);
+    color: white;
 }
 
 .effect {
