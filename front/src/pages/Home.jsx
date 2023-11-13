@@ -6,7 +6,7 @@ function Home() {
 
     return (
         <>
-            <main className="home">
+            <div className="home">
                 <Carousel/>
                 <section className="enlaces">
                     <Link to="#" className="">INDUMENTARIA</Link>
@@ -33,7 +33,7 @@ function Home() {
 
                 </section>
 
-            </main>
+            </div>
         </>
     )
 }

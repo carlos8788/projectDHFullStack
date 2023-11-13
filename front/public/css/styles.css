@@ -42,6 +42,8 @@ a:active {
     align-items: center;
     gap: 20px;
     padding: 15px 10px;
+    position: relative;
+    
 }
 
 .navbar-logo-img {
@@ -51,35 +53,61 @@ a:active {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
+    z-index: 120;
+}
+
+.display-none{
+    display: none;
+    transform: translateY(-100%);
+    transition: transform 500ms ease-in-out;
+}
+
+.display-normal{
+    position: absolute;
+    top: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10;
+    transform: translateY(0);
 }
 
 .navbar-links {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: none;
-    gap: 20px;
+    background-color: var(--primary-black);
+    width: 100%;
+    
 }
 
-.navbar-links a {
+.navbar-links li, .navbar-links li a{
+    background-color: var(--primary-black);
+    display: block;
     text-decoration: none;
-    color: var(--primary-black);
+    color: white;
     text-transform: uppercase;
-    padding: 10px;
+    padding: 0 10px;
+    width: 100%;
 }
+
+
 
 /* .navbar-links li:hover {
     background-color: var(--primary-red);
 } */
 .navbar-links li a:hover {
-    background-color: var(--primary-black);
-    color: white;
+    font-weight: 700;
 }
 
+
+
 .fa-bars {
-    font-size: 30px;
+    font-size: 40px;
     margin-right: 20px;
     cursor: pointer;
+    border: none;
+    z-index: 1000;
 }
 
 .search-form {
@@ -142,6 +170,7 @@ a:active {
     color: rgba(255, 255, 255, 0.507);
     transition: background-color, color ease-in-out 0.2s;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    z-index: 100;
 }
 
 .button-rigth{
@@ -157,6 +186,32 @@ a:active {
 .carousel-button:hover{
     background-color: rgba(61, 63, 63, 0.623);
     color: white;
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutToLeft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.slide-in {
+    animation: slideInFromRight 0.3s forwards;
+}
+
+.slide-out {
+    animation: slideOutToLeft 0.3s forwards;
 }
 
 .effect {
@@ -191,11 +246,11 @@ a:active {
 
 .bannerGrande {
     background-image: url('/images/banner.png');
-    height: 150px;
+    height: 100px;
     /* width: 100%; */
     background-size: contain;
     background-repeat: no-repeat;
-    /* margin-top: 50px; */
+    margin-top: 50px;
     /* margin-bottom: 0; */
 }
 
