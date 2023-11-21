@@ -28,14 +28,12 @@ const productController = {
                 brands
             };
 
-            // Si necesitas revisar las opciones en consola:
-            console.log(options);
 
             return res.render('formCreateProduct', options);
 
         } catch (error) {
             console.error("Error fetching data:", error);
-            // Aquí puedes manejar el error, por ejemplo, renderizar una página de error, etc.
+
             return res.status(500).send("Internal Server Error");
         }
     },
@@ -44,6 +42,7 @@ const productController = {
 
     createProduct: async (req, res) => {
         try {
+            console.log(req.file);
             const productData = constructProductFromRequest(req);
 
             const query = await db.Product.create(productData);

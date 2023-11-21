@@ -15,7 +15,7 @@ const constructProductFromRequest = req => {
         throw new Error("File is missing!");
     }
 
-    const pathImg = extractImagePath(req.file.path);
+    // const pathImg = extractImagePath(req.file.path);
     
     return {
         name_product: productName,
@@ -26,11 +26,12 @@ const constructProductFromRequest = req => {
         id_color: Number(color),
         id_size: Number(size),
         id_brand: Number(brand),
-        image: pathImg
+        image: req.file.filename
     };
 };
 
 const extractImagePath = fullPath => {
+
     const partPath = fullPath.split('\\');
     const index = partPath.findIndex(text => text === 'images')
     const pathImgParts = partPath.splice(index, partPath.length);

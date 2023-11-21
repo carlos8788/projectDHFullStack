@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
     const [menu, setMenu] = useState(false)
-    const hamburgerBtn = () => menu ? setMenu(false) : setMenu(true)
+    const hamburgerBtn = () => setMenu(prevMenu => !prevMenu);
+
 
     return (
         <header className="header">
