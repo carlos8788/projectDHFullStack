@@ -1,40 +1,55 @@
 <header class="header">
-    <nav class="navbar">
-        <div class="navbar-logo">
-            <a href="/">
-                <div class="navbar-logo-img"></div>
-            </a>
-        </div>
-        <ul class="navbar-links">
-            <li><a href="/productCart">Carrito</a></li>
-            <div class="dropdown-div">
-                <li><a href="/" class="dropdown">Productos</a></li>
-                <!-- <ul class="menu-dropdown">
-                    <li><a href="#">1 </a></li>
-                    <li><a href="#">3 </a></li>
-                    <li><a href="#">5 </a></li>
-                </ul> -->
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid" id="navbar">
+            <div class="navbar-custom">
+                <a class="navbar-brand" href="/">
+                    <div class="navbar-logo-img"></div>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
-
-            <li><a href="/user/profile">Perfil</a></li>
-            <% if (user) { %>
-                <li><a href="/product/formCreateProduct">Crear Producto</a></li>
-                <li><a href="/user/logout">Cerrar Sesión</a></li>
-                <% } else { %>
-                    <li><a href="/user/register">Registrarse</a></li>
-                    <li><a href="/user/login">Iniciar Sesión</a></li>
-                    <% } %>
-
-
-        </ul>
-        <i class="fas fa-bars"></i>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                    <li class="item">
+                        <a class="link" href="/product/formCreateProduct">Carrito</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="/product/products">Productos</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="/product/formCreateProduct">Perfil</a>
+                    </li>
+                    <% if (user) { %>
+                        <li class="item">
+                            <a class="link" href="/product/formCreateProduct">Crear Producto</a>
+                        </li>
+                        <li class="item">
+                            <a class="link" href="/user/logout">Cerrar Sesión</a>
+                        </li>
+                        <% } else { %>
+                            <li class="item">
+                                <a class="link" href="/user/register">Registrarse</a>
+                            </li>
+                            <li class="item">
+                                <a class="link" href="/user/login">Iniciar Sesión</a>
+                            </li>
+                            <% } %>
+                </ul>
+            </div>
+        </div>
     </nav>
     <div class="search-form">
-        <form class="d-flex justify-content-center" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex justify-content-center" role="search" action="/product/searchProducts" id="form-search">
+            <input class=" me-2" type="search" placeholder="Search" name="search" aria-label="Search">
             <button class="" type="submit"><i class="fas fa-search"></i></button>
         </form>
 
     </div>
 
 </header>
+<script src="/js/searchProductsFront.js"></script>
+<script src="/js/navBarLinks.js"></script>

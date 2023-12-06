@@ -18,7 +18,7 @@
                     <label for="product-name">Nombre del producto</label>
                     <input type="text" id="product-name" name="productName"
                         value="<%= locals.old ? old.productName : '' %>"
-                        class="<%= (locals.errors && errors.productName) ? 'error-input' : '' %>">
+                        class="form-control <%= (locals.errors && errors.productName) ? 'error-input' : '' %>">
                     <%- locals.errors && errors.productName ? `<p class="msg-error">${errors.productName.msg}</p>` : ''
                         %>
                 </div>
@@ -27,14 +27,14 @@
                     <label for="description">Descripción</label>
                     <input type="text" id="description" name="description"
                         value="<%= locals.old ? old.description : '' %>"
-                        class="<%= (locals.errors && errors.description) ? 'error-input' : '' %>">
+                        class="form-control <%= (locals.errors && errors.description) ? 'error-input' : '' %>">
                     <%- locals.errors && errors.description ? `<p class="msg-error">${errors.description.msg}</p>` : ''
                         %>
                 </div>
 
                 <div class="div-form">
                     <label for="category">Categoría</label>
-                    <select id="category" name="category">
+                    <select id="category" name="category" class="form-control">
                         <% categories.forEach(category=> { %>
                             <option value="<%= category.id_category %>">
                                 <%= category.name %>
@@ -47,7 +47,7 @@
 
                 <div class="div-form">
                     <label for="color">Color</label>
-                    <select id="color" name="color">
+                    <select id="color" name="color" class="form-control">
                         <% colors.forEach(color=> { %>
                             <option value="<%= color.id_color %>">
                                 <%= color.name %>
@@ -57,22 +57,22 @@
                     <%- locals.errors && errors.color ? `<p class="msg-error">${errors.color.msg}</p>` : '' %>
                 </div>
 
-                <div class="div-form">
+                <div class="div-form ">
                     <label for="stock">Stock</label>
                     <input type="number" id="stock" name="stock" value="<%= locals.old ? old.price : '' %>"
-                        class="<%= (locals.errors && errors.stock) ? 'error-input' : '' %>">
+                        class="form-control <%= (locals.errors && errors.stock) ? 'error-input' : '' %>">
                     <%- locals.errors && errors.stock ? `<p class="msg-error">${errors.stock.msg}</p>` : '' %>
                 </div>
 
                 <div class="div-form">
                     <label for="price">Precio</label>
                     <input type="number" id="price" name="price" value="<%= locals.old ? old.price : '' %>"
-                        class="<%= (locals.errors && errors.price) ? 'error-input' : '' %>">
+                        class="form-control <%= (locals.errors && errors.price) ? 'error-input' : '' %>">
                     <%- locals.errors && errors.price ? `<p class="msg-error">${errors.price.msg}</p>` : '' %>
                 </div>
                 <div class="div-form">
                     <label for="brand">Marca</label>
-                    <select id="brand" name="brand">
+                    <select id="brand" name="brand" class="form-control">
                         <% brands.forEach(brand=> { %>
                             <option value="<%= brand.id_brand %>">
                                 <%= brand.name %>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="div-form">
                     <label for="size">Tamaño</label>
-                    <select id="size" name="size">
+                    <select id="size" name="size" class="form-control">
                         <% sizes.forEach(size=> { %>
                             <option value="<%= size.id_size %>">
                                 <%= size.name %>
@@ -93,7 +93,7 @@
 
                 <div class="div-form file">
                     <label for="product-img" class="label-file">Cargue la imagen del producto</label>
-                    <input name="productImg" type="file" id="product-img" class="load-file">
+                    <input name="productImg" type="file" id="product-img" class="load-file ">
                     <% if (locals.errors && errors.productImg) { %>
                         <p class="msg-error">
                             <%= errors.productImg.msg %>

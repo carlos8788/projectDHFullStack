@@ -8,5 +8,6 @@ router.get('/productDetail/:id', controller.productDetail)
 router.get('/formCreateProduct', authenticate, controller.formCreateProduct)
 router.post('/createProduct', upload.single('productImg'), controller.createProduct)
 router.get('/products', controller.products)
+router.get('/searchProducts', controller.searchProducts)
 
 module.exports = router

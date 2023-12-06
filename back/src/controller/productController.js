@@ -4,7 +4,7 @@ const sequelize = db.sequelize
 const { constructProductFromRequest, toProductData } = require('../utils/dto');
 
 const productController = {
-    
+
     productDetail: (req, res) => {
         const { id } = req.params
         // const producto = products.find(p => p.id === id)
@@ -68,8 +68,24 @@ const productController = {
         });
 
         const products = productsToDB.map(product => toProductData(product));
-        console.log(products);
+
         return res.render("products", { products })
+    },
+
+    searchProducts: async (req, res) => {
+        const data = req.query.search
+        const queryDB = await db.Product.findAll({
+            include: [{
+                model: db.Category,
+                as: 'category',
+                where: { name: data }
+            }],
+            raw: true
+        });
+
+        // const products = queryDB.map(product => toProductData(product));
+
+        return res.render('searchProducts', { products: queryDB })
     }
 }
 

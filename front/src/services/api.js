@@ -1,10 +1,8 @@
-// services/api.js
 import axios from 'axios';
 
-// Configura una instancia de axios con una URL base y posibles configuraciones globales
+
 const apiClient = axios.create({
-  baseURL: 'http://localhost:3000/api', // Cambia esto por la URL de tu backend
-  // Aquí podrías añadir headers que sean comunes para todas las llamadas, como tokens de autenticación
+  baseURL: 'http://localhost:3000/api', 
 });
 
 // Productos
@@ -65,4 +63,4 @@ export const removeItemFromCart = async (userId, itemId) => {
   }
 };
 
-// ... y así sucesivamente para cada acción que quieras realizar con tu API.
+

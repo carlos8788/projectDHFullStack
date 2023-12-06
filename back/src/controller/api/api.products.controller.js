@@ -20,6 +20,9 @@ const apiMainController = {
             console.log(error);
         }
 
+    },
+    searchResults: async (req, res) => {
+        
     }
 }
 console.log(apiMainController);

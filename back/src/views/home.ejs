@@ -56,12 +56,8 @@
       </section>
 
       <section class="bannerGrande">
-        
-  
-      </section>
 
-      <section class="spamLogin">
-        <div><a href="/register">Registrarse</a></div>
+
       </section>
 
       <section id="sport" class="">
@@ -77,15 +73,20 @@
                 <div class="descripcion">
                   <%= producto.description %>
                 </div>
-                <div class="color">Color: <%= producto.color.toUpperCase() || 'No especificado' %>
+                <div>
+                  Color: <%= producto.color.toUpperCase() || 'No especificado' %>
                 </div>
-                <div class="color">Tamaño: <%= producto.size || 'No especificado' %>
+                <div>
+                  Tamaño: <%= producto.size || 'No especificado' %>
                 </div>
-                <div class="color">Marca: <%= producto.brand || 'No especificado' %>
+                <div>
+                  Marca: <%= producto.brand || 'No especificado' %>
                 </div>
-                <div class="color">Categoría: <%= producto.category || 'No especificado' %>
+                <div>
+                  Categoría: <%= producto.category || 'No especificado' %>
                 </div>
-                <div class="precio">$<%= producto.price %>
+                <div class="precio">
+                  $<%= producto.price %>
                 </div>
               </div>
               <a href="/product/productDetail/<%= producto.id %>" class="btnPrimary">Añadir al carrito</a>
