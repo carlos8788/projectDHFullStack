@@ -15,6 +15,7 @@ module.exports = {
     },
 
     isLogged: (req, res, next) => {
+        console.log('isLogged')
         const token = req.cookies.auth_token;
         if (token) {
             console.log('logueado');
@@ -51,6 +52,9 @@ module.exports = {
                 next(error);
             }
         }
-    }
+    },
+    isSuperAdmin: (req, res, next) => {
+
+    },
 
 }

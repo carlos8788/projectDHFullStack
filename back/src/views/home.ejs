@@ -55,44 +55,16 @@
         <a href="#" class="">CONTACTO</a>
       </section>
 
-      <section class="bannerGrande">
+      <section class="bannerGrande-container">
+        <div class="bannerGrande">
 
+        </div>
 
       </section>
 
       <section id="sport" class="">
         <h2 class="title-productosDestacados">Productos Destacados</h2>
-        <div class="productosDestacados">
-          <% products.forEach(producto=> { %>
-            <div class="elemento">
-              <img src="images/products/<%= producto.image %>" alt="<%= producto.name %>" />
-              <div class="caja">
-                <div class="nombre"><b>
-                    <%= producto.name_product %>
-                  </b></div>
-                <div class="descripcion">
-                  <%= producto.description %>
-                </div>
-                <div>
-                  Color: <%= producto.color.toUpperCase() || 'No especificado' %>
-                </div>
-                <div>
-                  Tamaño: <%= producto.size || 'No especificado' %>
-                </div>
-                <div>
-                  Marca: <%= producto.brand || 'No especificado' %>
-                </div>
-                <div>
-                  Categoría: <%= producto.category || 'No especificado' %>
-                </div>
-                <div class="precio">
-                  $<%= producto.price %>
-                </div>
-              </div>
-              <a href="/product/productDetail/<%= producto.id %>" class="btnPrimary">Añadir al carrito</a>
-            </div>
-            <% }); %>
-        </div>
+        <%- include('partial/products') %>
 
       </section>
     </main>

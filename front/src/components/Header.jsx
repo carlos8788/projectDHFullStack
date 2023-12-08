@@ -1,43 +1,40 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
+import img from '../assets/logo.png'
 
-const Header = () => {
-    const [menu, setMenu] = useState(false)
-    const hamburgerBtn = () => setMenu(prevMenu => !prevMenu);
-
-
-    return (
-        <header className="header">
-            <nav className="navbar">
-                <div className="navbar-logo">
-                    <Link to="/">
-                        <div className="navbar-logo-img"></div>
-                    </Link>
-                </div>
-                <ul className={`navbar-links ${menu ? 'display-normal' : 'display-none'}`}>
-                    <li><Link to="/">Carrito</Link></li>
-                    <div className="dropdown-div">
-                        <li><Link to="/" className="dropdown">Productos</Link></li>
-                    </div>
-
-                    <li><Link to="/user/profile">Perfil</Link></li>
-                    <li><Link to="/user/register">Registrarse</Link></li>
-                    <li><Link to="/user/login">Iniciar Sesión</Link></li>
-
-
-                </ul>
-                <button className="fas fa-bars" onClick={hamburgerBtn}></button>
-            </nav>
-            <div className="search-form">
-                <form className="d-flex justify-content-center" role="search">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button className="" type="submit"><i className="fas fa-search"></i></button>
-                </form>
-
-            </div>
-
-        </header>
-    )
+function Header() {
+  return (
+    <Navbar bg="dark" expand="lg" variant="dark">
+      <Container fluid>
+        <Navbar.Toggle aria-controls="navbarResponsive" />
+        <Navbar.Collapse id="navbarResponsive">
+          <div className="d-flex justify-content-around w-100 align-items-center">
+            <Navbar.Brand href="#">
+                <img 
+                src={img}
+                alt="Logo" 
+                width={70}
+                />
+            </Navbar.Brand>
+            <Nav>
+              <Nav.Link href="#">Home</Nav.Link>
+              <Nav.Link href="#">Features</Nav.Link>
+              <Nav.Link href="#">Pricing</Nav.Link>
+              <Nav.Link href="#">About</Nav.Link>
+              <NavDropdown title="Dropdown" id="navbarDropdown">
+                <NavDropdown.Item href="#">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#">Another action</NavDropdown.Item>
+                <NavDropdown.Item href="#">Something else here</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#">Separated link</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </div>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
 
-export default Header
+export default Header;
+

@@ -7,40 +7,44 @@
 </head>
 
 <body>
-
     <%- include('partial/header') %>
-        <main>
-            <div class="product-detail">
-                <div class="product-img">
-                    <img src="<%= producto.image %>" alt="<%= producto.name %>">
-                </div>
-                <div class="product-info">
-                    
-                    <h2><%= producto.name %></h2>
-                    <p><%= producto.description %></p>
-                    <p><strong>Precio: $<%= producto.price %></strong></p>
-                    <p>Hasta 6 cuotas sin interes</p>
-
-                    <div class="product-details">
-                        <div class="detail-column">
-                            <p><strong>Género:</strong> Unisex</p>
-                            <p><strong>Adecuado para:</strong> Entrenamiento</p>
-                            <p><strong>Garantía:</strong> Contra defecto de fabricación</p>
-                        </div>
-                        <div class="detail-column">
-                            <p><strong>Origen:</strong> Importado</p>
-                            <p><strong>País del fabricante:</strong> China</p>
-                            <p><strong>Marca:</strong> Nike</p>
-                        </div>
+        <main class="py-5">
+            <div class="card-custom mb-3">
+                <div class="card-body-custom">
+                    <img src="/images/products/<%= product.image %>" alt="<%= product.name %>" width="300">
+                    <div class="card-body text-center align-items-center">
+                        <h5 class="card-title">
+                            <%= product.name %>
+                        </h5>
+                        <p class="card-text">
+                            <%= product.description %>
+                        </p>
+                        <p class="card-text">Precio: $<%= product.price %>
+                        </p>
+                        <p class="card-text">Stock: <%= product.stock %>
+                        </p>
+                        <p>
+                            Color: <%= product.color.toUpperCase() || 'No especificado' %>
+                        </p>
+                        <p>
+                            Tamaño: <%= product.size || 'No especificado' %>
+                        </p>
+                        <p>
+                            Marca: <%= product.brand || 'No especificado' %>
+                        </p>
+                        <p>
+                            Categoría: <%= product.category || 'No especificado' %>
+                        </p>
                     </div>
+                </div>
+
+                <div class="card-footer my-4">
                     <button class="btnPrimary">Agregar al Carrito</button>
+                    <button class="btnPrimary btnBack">volver</button>
                 </div>
             </div>
         </main>
-
-
         <%- include('partial/footer') %>
-
 </body>
 
 </html>

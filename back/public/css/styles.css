@@ -57,8 +57,8 @@ a:active {
 }
 
 .navbar-logo-img {
+    background-image: url('../images/logo.jpg');
     background-color: var(--primary-white);
-    background-image: url('../images/logo.png');
     width: 360px;
     height: 120px;
     background-size: contain;
@@ -67,7 +67,7 @@ a:active {
 }
 
 .nav-menu-logo {
-    background-color: var(--primary-white);
+    background-color: white;
     z-index: 1100;
     display: flex;
     flex-direction: column;
@@ -99,6 +99,10 @@ a:active {
 .item:hover,
 .link:hover {
     background-color: var(--secondary-red);
+}
+
+.navbar-toggler-icon {
+    background-color: white;
 }
 
 .search-form {
@@ -137,6 +141,7 @@ a:active {
 }
 
 .search-form button i {
+    background-color: var(--primary-white);
     margin: 0 auto;
 }
 
@@ -178,14 +183,20 @@ a:active {
     height: 270px;
 }
 
+.bannerGrande-container {
+    display: block;
+    /* position: relative; */
+    height: 150px;
+}
+
 .bannerGrande {
     background-image: url('/images/banner.png');
     height: 150px;
-    /* width: 100%; */
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
-    /* margin-top: 50px; */
-    /* margin-bottom: 0; */
+    /* position: absolute; */
+    top: 0;
+    left: 0;
 }
 
 .home .enlaces {
@@ -216,11 +227,6 @@ main .enlaces a:hover {
     color: white;
 }
 
-section img.bannerGrande {
-    width: 100%;
-    border: solid 1px var(--primary-black);
-    padding: auto;
-}
 
 .spamLogin {
     font-size: 30px;
@@ -297,13 +303,12 @@ div.elemento img {
 }
 
 .elemento .caja {
-    height: 300px;
+    height: 100px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     justify-content: space-around;
     border-top: solid 2px #ebebeb;
-    padding: 15px;
+    padding: 15px 15px 0 15px;
 }
 
 div.nombre {
@@ -328,6 +333,20 @@ div.descripcion {
 div.comprar {
     background-color: black;
 
+}
+
+/* ----------------------- Product Detail --------------- */
+
+.card-custom {
+    width: 320px;
+    border: 1px solid var(--primary-black);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 15px;
+    border-radius: 8px;
 }
 
 /* ----------------------- Form register --------------- */
@@ -526,6 +545,22 @@ div.comprar {
     text-align: center;
 }
 
+.btnBack {
+
+    background-color: var(--primary-gray);
+    border: var(--secondary-red) solid 1px;
+    color: var(--primary-black);
+}
+
+.btnInfo a {
+    display: block;
+    background-color: var(--primary-black);
+    color: var(--primary-gray);
+}
+
+.btnInfo a:hover {
+    background-color: #666464;
+}
 
 /* ============== FOOTER =============================*/
 
@@ -652,10 +687,19 @@ footer .social ul li:hover {
         height: 400px;
     }
 
+    /* ============== CARD DETAIL =============================*/
 
-    /* .search-form button {
-        right: 50px;
-    } */
+    .card-custom {
+        width: 600px;
+
+    }
+
+    .card-body-custom {
+        width: 95%;
+        display: flex;
+        justify-content: space-between;
+    }
+
 
     /* ============== FORM =============================*/
 
@@ -666,6 +710,10 @@ footer .social ul li:hover {
 
     .div-form {
         width: 65%;
+    }
+
+    .form-control {
+        width: 350px !important;
     }
 
     /* ============== FOOTER =============================*/
@@ -679,6 +727,7 @@ footer .social ul li:hover {
         text-align: center;
         width: 100%;
     }
+
 }
 
 
@@ -736,12 +785,18 @@ footer .social ul li:hover {
         width: 250px;
     }
 
+    .bannerGrande-container {
+        height: 200px;
+
+    }
+
     .bannerGrande {
         height: 300px;
         background-size: contain;
         background-repeat: no-repeat;
-        margin: auto;
+        /* margin: 0 auto; */
     }
+
 }
 
 /* ***************************************************************** */
@@ -761,7 +816,7 @@ footer .social ul li:hover {
 
 
     .carousel-container {
-        height: 600px;
+        height: 700px;
         width: 90%;
         margin: auto;
         position: relative;
@@ -793,10 +848,20 @@ footer .social ul li:hover {
     }
 
     .carousel-item img {
-        height: 600px;
+        height: 700px;
     }
 
+    .bannerGrande-container {
+        height: 400px;
 
+    }
+
+    .bannerGrande {
+        height: 300px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        /* margin: 0 auto; */
+    }
 
     .main-product-cart {
         /* margin: auto; */
@@ -811,7 +876,25 @@ footer .social ul li:hover {
     .global-footer {
         flex-direction: row;
         flex-wrap: wrap;
+        align-items: center;
     }
 
+    .contacto,
+    .socios {
+        height: 255px;
+    }
+}
 
+@media (min-width: 1870px) {
+    .bannerGrande-container {
+        height: 300px;
+
+    }
+
+    .bannerGrande {
+        /* height: 300px; */
+        background-size: cover;
+        background-repeat: no-repeat;
+        /* margin: 0 auto; */
+    }
 }

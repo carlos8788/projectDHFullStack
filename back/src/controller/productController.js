@@ -5,11 +5,32 @@ const { constructProductFromRequest, toProductData } = require('../utils/dto');
 
 const productController = {
 
-    productDetail: (req, res) => {
+    productDetail: async (req, res) => {
         const { id } = req.params
-        // const producto = products.find(p => p.id === id)
-
-        return res.render('productDetail', { producto })
+        const product = await db.Product.findOne({
+            where: { id_product: id },
+            include: [
+                { model: db.Category, as: 'category', attributes: ['name'] },
+                { model: db.Color, as: 'color', attributes: ['name'] },
+                { model: db.Size, as: 'size', attributes: ['name'] },
+                { model: db.Brand, as: 'brand', attributes: ['name'] }
+            ],
+            raw: true
+        })
+        const productParse = {
+            id_product: product.id_product,
+            name_product: product.name_product,
+            description: product.description,
+            price: product.price,
+            stock: product.stock,
+            image: product.image,
+            category: product['category.name'],
+            color: product['color.name'],
+            size: product['size.name'],
+            brand: product['brand.name']
+        }
+        console.log(product)
+        return res.render('productDetail', { product: productParse })
     },
 
     formCreateProduct: async (req, res) => {
@@ -42,14 +63,10 @@ const productController = {
 
     createProduct: async (req, res) => {
         try {
-            console.log(req.file);
             const productData = constructProductFromRequest(req);
 
             const query = await db.Product.create(productData);
 
-            console.log(query);
-
-            // return res.json(query);
             return res.redirect('/product/formCreateProduct');
         } catch (error) {
             console.error("Error creating product:", error);
@@ -66,7 +83,7 @@ const productController = {
                 { model: db.Brand, as: 'brand', attributes: ['name'] }
             ]
         });
-
+        console.log(productsToDB)
         const products = productsToDB.map(product => toProductData(product));
 
         return res.render("products", { products })
@@ -74,19 +91,44 @@ const productController = {
 
     searchProducts: async (req, res) => {
         const data = req.query.search
+
         const queryDB = await db.Product.findAll({
             include: [{
                 model: db.Category,
                 as: 'category',
-                where: { name: data }
-            }],
+                where: {
+                    name: {
+                        [db.Sequelize.Op.like]: `%${data}%`
+                    }
+                },
+                attributes: ['name']
+            },
+            { model: db.Color, as: 'color', attributes: ['name'] },
+            { model: db.Size, as: 'size', attributes: ['name'] },
+            { model: db.Brand, as: 'brand', attributes: ['name'] }],
             raw: true
         });
 
-        // const products = queryDB.map(product => toProductData(product));
+        const products = queryDB.map(product => {
+            return {
+                id_product: product.id_product,
+                name_product: product.name_product,
+                description: product.description,
+                price: product.price,
+                stock: product.stock,
+                image: product.image,
+                category: product['category.name'],
+                color: product['color.name'],
+                size: product['size.name'],
+                brand: product['brand.name']
+            };
+        });
 
-        return res.render('searchProducts', { products: queryDB })
-    }
+        return res.render('searchProducts', { products })
+    },
+    editProduct: async (req, res) => {
+
+    },
 }
 
 module.exports = productController

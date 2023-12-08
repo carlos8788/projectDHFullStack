@@ -4,13 +4,16 @@
 
 
 1. Refactor the productDetail view
-2. Refactor the all inputs
+2. view and functions by editProducts
 3. Validate user registrations and login
 4. Load users into the DB with hashed passwords
-5. Adjust the cards for all resolutions
+5. create controller cart
+6. create view cart
+7. create superAdmin
+8. check user registration if exists
 
 ### In Progress
-- Add dropdown in links
+- 8
 
 ### Done
 - Form search 

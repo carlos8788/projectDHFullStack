@@ -14,30 +14,34 @@
             </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto">
+                    <% if (!user || (user && user.role !== 'superadmin')) { %>
                     <li class="item">
                         <a class="link" href="/product/formCreateProduct">Carrito</a>
                     </li>
+                    <% } %>
                     <li class="item">
                         <a class="link" href="/product/products">Productos</a>
                     </li>
-                    <li class="item">
-                        <a class="link" href="/product/formCreateProduct">Perfil</a>
-                    </li>
                     <% if (user) { %>
+                        <li class="item">
+                            <a class="link" href="/product/formCreateProduct">Perfil</a>
+                        </li>
+                        <% if (user.role==='superadmin') { %>
                         <li class="item">
                             <a class="link" href="/product/formCreateProduct">Crear Producto</a>
                         </li>
+                        <% } %>
                         <li class="item">
                             <a class="link" href="/user/logout">Cerrar Sesión</a>
                         </li>
-                        <% } else { %>
-                            <li class="item">
-                                <a class="link" href="/user/register">Registrarse</a>
-                            </li>
-                            <li class="item">
-                                <a class="link" href="/user/login">Iniciar Sesión</a>
-                            </li>
-                            <% } %>
+                    <% } else { %>
+                        <li class="item">
+                            <a class="link" href="/user/register">Registrarse</a>
+                        </li>
+                        <li class="item">
+                            <a class="link" href="/user/login">Iniciar Sesión</a>
+                        </li>
+                    <% } %>
                 </ul>
             </div>
         </div>

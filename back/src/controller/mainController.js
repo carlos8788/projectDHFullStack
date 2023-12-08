@@ -16,7 +16,7 @@ const mainController = {
         });
         const products = productsToDB.map(product => toProductData(product));
         // const mostVisited = products.filter(p => p.category === 'Más visitado')
-        
+        console.log(req.user)
         return res.render('home', { products })
     },
 

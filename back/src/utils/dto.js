@@ -39,6 +39,7 @@ const extractImagePath = fullPath => {
 };
 
 const toProductData = product => {
+
     return {
         id_product: product.id_product,
         name_product: product.name_product,

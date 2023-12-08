@@ -1,0 +1,22 @@
+<div class="productosDestacados">
+  <% products.forEach(producto=> { %>
+    <div class="elemento">
+      <img src="/images/products/<%= producto.image %>" alt="<%= producto.name %>" />
+      <div class="caja">
+        <p class="nombre">
+          <%= producto.name_product %>
+        </p>
+        <p class="descripcion">
+          <%= producto.description %>
+        </p>        
+        <p class="precio">
+          $<%= producto.price %>
+        </p>
+      </div>
+      <div class="btnInfo">
+        <a href="/product/productDetail/<%= producto.id_product %>" class="btnPrimary mt-4">Mas info</a>
+      </div>
+      <a href="/product/productDetail/<%= producto.id %>" class="btnPrimary mt-3">Añadir al carrito</a>
+    </div>
+    <% }); %>
+</div>
