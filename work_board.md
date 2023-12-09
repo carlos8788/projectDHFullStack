@@ -11,6 +11,8 @@
 6. create view cart
 7. create superAdmin
 8. check user registration if exists
+9. create api crud users
+10. create api crud carts
 
 ### In Progress
 - 8
