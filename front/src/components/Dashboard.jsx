@@ -6,7 +6,7 @@ import { useProducts } from '../hooks/useProducts';
 export const Dashboard = () => {
     const { products, loading, error } = useProducts();
     return (
-        <Container fluid bg="secondary" className="p-4 bg-secondary mt-5">
+        <Container fluid bg="secondary" className="p-4 mt-5">
             <Row>
                 <Col md={4} className="mb-4">
                     <Card bg="primary" text="white">
@@ -14,7 +14,7 @@ export const Dashboard = () => {
                         <Card.Body>
                             <Card.Title>Datos de Usuarios</Card.Title>
                             <Card.Text>
-                                {/* Aquí puedes agregar los datos o estadísticas de la tabla de usuarios */}
+
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -26,7 +26,7 @@ export const Dashboard = () => {
                         <Card.Body>
                             <Card.Title>Datos de Carritos</Card.Title>
                             <Card.Text>
-                                {/* Aquí puedes agregar los datos o estadísticas de la tabla de carritos */}
+
                             </Card.Text>
                         </Card.Body>
                     </Card>
