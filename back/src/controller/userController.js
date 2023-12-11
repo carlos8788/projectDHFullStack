@@ -1,6 +1,5 @@
 const { validationResult } = require('express-validator')
 const jwt = require('jsonwebtoken');
-const { extractImagePath } = require('../utils/dto')
 const { hashPassword, verifyPassword } = require('../utils/hashPassword')
 const db = require('../database/models/')
 const sequelize = db.sequelize
@@ -14,10 +13,36 @@ module.exports = {
     register: async (req, res) => {
         const errors = validationResult(req)
         const user = req.body
-        console.log(user);
+        
+        const userExists = await db.User.findOne({
+            where: {
+                email: user.email
+            },
+            raw: true,
+        })
+
+        if (userExists) {
+            errors.errors.push({
+                value: req.body.email,
+                msg: 'El correo electrónico ya está en uso',
+                param: 'email',
+                location: 'body'
+            });
+        }
+
+        const usernameExists = await db.User.findOne({ where: { username: user.username } });
+        if (usernameExists) {
+
+            errors.errors.push({
+                value: req.body.username,
+                msg: 'El nombre de usuario ya está en uso',
+                param: 'username',
+                location: 'body'
+            });
+        }
 
         if (!errors.isEmpty()) {
-            console.log(errors.array());
+
             return res.render(
                 'register',
                 {
@@ -34,7 +59,7 @@ module.exports = {
             password: hashPass,
             avatar: req.file.filename
         }
-        console.log(newUser)
+
         const query = await db.User.create(newUser)
         console.log(query)
         return res.render('login')
@@ -48,39 +73,20 @@ module.exports = {
 
         let { email, password } = req.body
 
-        // console.log(user);
-
-        // // const userWithoutPassword = {
-        // //     id: user.id,
-        // //     username: user.username,
-        // //     email: user.email
-
-        // // };
-        // req.user = user
-        // console.log(req.user);
-        // const token = jwt.sign({ user: user.email }, 'riverEsVida', { expiresIn: '1h' });
-        // console.log(token);
-        // res.cookie('auth_token', token);
-        // res.redirect('/');
-
         if (email === 'admin@river.com' && password === '123456') {
-            // Credenciales de superadmin
             const token = jwt.sign({ role: 'superadmin' }, 'riverEsVida', { expiresIn: '1h' });
             res.cookie('auth_token', token, { httpOnly: true, secure: true });
-            console.log('admin')
             return res.redirect('/');
         } else {
-            // Busca al usuario en la base de datos
+
             try {
                 const user = await db.User.findOne({ where: { email } });
-                console.log(user)
                 if (user && verifyPassword(password, user.password)) {
-                    // Credenciales de usuario normal
+
                     const token = jwt.sign({ role: 'user', userId: user.id }, 'riverEsVida', { expiresIn: '1h' });
                     res.cookie('auth_token', token, { httpOnly: true, secure: true });
                     return res.redirect('/');
                 } else {
-                    // Credenciales incorrectas
                     return res.status(401).send('Credenciales inválidas');
                 }
             } catch (error) {

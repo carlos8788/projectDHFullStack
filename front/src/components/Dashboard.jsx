@@ -4,7 +4,16 @@ import { useProducts } from '../hooks/useProducts';
 
 
 export const Dashboard = () => {
-    const { products, loading, error } = useProducts();
+    const {
+        products,
+        loading,
+        error,
+        create,
+        read,
+        update,
+        remove,
+        refreshProducts
+    } = useProducts();
     return (
         <Container fluid bg="secondary" className="p-4 mt-5">
             <Row>
@@ -41,7 +50,7 @@ export const Dashboard = () => {
                             {error && <div>Error: {error.message}</div>}
                             <ul>
                                 {products.map((product, index) => (
-                                    <li key={index}>{product.name_product} - {product.price}</li> 
+                                    <li key={index}>{product.name_product} - {product.price}</li>
                                 ))}
                             </ul>
                         </Card.Body>
