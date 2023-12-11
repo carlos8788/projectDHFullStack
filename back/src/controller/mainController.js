@@ -1,5 +1,3 @@
-// const sequelize = require('../database/config/config');
-// const Sequelize = require('sequelize');  // Asegúrate de requerir Sequelize para usar DataTypes
 const {toProductData} = require('../utils/dto')
 const db = require('../database/models/')
 const sequelize = db.sequelize
@@ -17,7 +15,7 @@ const mainController = {
         const products = productsToDB.map(product => toProductData(product));
         // const mostVisited = products.filter(p => p.category === 'Más visitado')
         console.log(req.user)
-        return res.render('home', { products })
+        return res.render('home', { products, notFound: false })
     },
 
     productDetail: (req, res) => {
@@ -25,11 +23,6 @@ const mainController = {
         // const producto = products.find(p => p.id === id)
         return res.render('productDetail', { producto })
     },
-
-    cartDetail: (req, res) => {
-        return res.render('productCart')
-    },
-
 
     formCreateProduct: (req, res) => {
         return res.render('formCreateProduct')

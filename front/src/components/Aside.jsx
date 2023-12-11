@@ -24,19 +24,12 @@ function Aside() {
                 <Nav.Link href="#">Home</Nav.Link>
                 <Nav.Link href="#">Link</Nav.Link>
                 <NavDropdown title="Products" id="offcanvasNavbarDropdown">
-                  <Link to="/products/all" className='text-decoration-none ms-3 d-block'>
-                    All Products
-                  </Link>
-
-                  <LinkContainer to="/products/create">
-                    <NavDropdown.Item>Create Product</NavDropdown.Item>
-                  </LinkContainer>
+                  <NavDropdown.Item href="/products/all">All Products</NavDropdown.Item>
+                  <NavDropdown.Item href="/products/create">Create Product</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Users" id="offcanvasNavbarDropdown">
+                  <NavDropdown.Item href="/users/all">All Users</NavDropdown.Item>
                   <NavDropdown.Item href="#">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#">Another action</NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#">Something else here</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Carts" id="offcanvasNavbarDropdown">
                   <NavDropdown.Item href="#">Action</NavDropdown.Item>

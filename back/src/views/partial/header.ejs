@@ -16,7 +16,7 @@
                 <ul class="navbar-nav me-auto">
                     <% if (!user || (user && user.role !== 'superadmin')) { %>
                     <li class="item">
-                        <a class="link" href="/product/formCreateProduct">Carrito</a>
+                        <a class="link" href="/productCart">Carrito</a>
                     </li>
                     <% } %>
                     <li class="item">
@@ -24,7 +24,7 @@
                     </li>
                     <% if (user) { %>
                         <li class="item">
-                            <a class="link" href="/product/formCreateProduct">Perfil</a>
+                            <a class="link" href="/user/profile">Perfil</a>
                         </li>
                         <% if (user.role==='superadmin') { %>
                         <li class="item">

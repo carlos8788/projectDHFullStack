@@ -10,9 +10,27 @@
 
     <%- include('partial/header') %>
 
-    <main>
-        <h1>PROFILE</h1>
-        <h2><%= user.user %></h2>
+    <main class="py-5">
+        <div class="card-custom mb-3">
+            <div class="card-body-custom">
+                <img src="/images/profiles/<%= user.avatar %>" alt="<%= user.fullName %>" width="300">
+                <div class="card-body text-center align-items-center">
+                    <h5 class="card-title">
+                        <%= user.fullName %>
+                    </h5>
+                    <p class="card-text">
+                        Username: <%= user.username %>
+                    </p>
+                    <p class="card-text">
+                        Email: <%= user.email %>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card-footer my-4">
+                <a class="btnPrimary btnBack btn btn-light" href="/">volver</a>
+            </div>
+        </div>
     </main>
 
     <%- include('partial/footer') %>

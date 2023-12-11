@@ -1,22 +1,40 @@
 <div class="productosDestacados">
-  <% products.forEach(producto=> { %>
-    <div class="elemento">
-      <img src="/images/products/<%= producto.image %>" alt="<%= producto.name %>" />
-      <div class="caja">
-        <p class="nombre">
-          <%= producto.name_product %>
-        </p>
-        <p class="descripcion">
-          <%= producto.description %>
-        </p>        
-        <p class="precio">
-          $<%= producto.price %>
-        </p>
-      </div>
-      <div class="btnInfo">
-        <a href="/product/productDetail/<%= producto.id_product %>" class="btnPrimary mt-4">Mas info</a>
-      </div>
-      <a href="/product/productDetail/<%= producto.id %>" class="btnPrimary mt-3">Añadir al carrito</a>
-    </div>
-    <% }); %>
+
+  <% if (notFound) { %>
+
+    <main class="py-5 w-100 d-flex justify-content-center">
+      <div class="card-custom m-3">
+        <div class="">
+
+          <div class="card-body text-center align-items-center">
+            <p class="text-danger">No se encontraron productos.</p>
+          </div>
+
+          <div class="card-footer my-4">
+            <a class="btnPrimary btnBack btn btn-light" href="/product/products">volver</a>
+          </div>
+        </div>
+    </main>
+    <% } else { %>
+      <% products.forEach(producto=> { %>
+        <div class="elemento">
+          <img src="/images/products/<%= producto.image %>" alt="<%= producto.name %>" />
+          <div class="caja">
+            <p class="nombre">
+              <%= producto.name_product %>
+            </p>
+            <p class="descripcion">
+              <%= producto.description %>
+            </p>
+            <p class="precio">
+              $<%= producto.price %>
+            </p>
+          </div>
+          <div class="btnInfo">
+            <a href="/product/productDetail/<%= producto.id_product %>" class="btnPrimary mt-4">Mas info</a>
+          </div>
+          <a href="/product/productDetail/<%= producto.id %>" class="btnPrimary mt-3">Añadir al carrito</a>
+        </div>
+        <% }); %>
+          <% }; %>
 </div>

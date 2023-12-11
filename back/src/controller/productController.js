@@ -86,7 +86,7 @@ const productController = {
         console.log(productsToDB)
         const products = productsToDB.map(product => toProductData(product));
 
-        return res.render("products", { products })
+        return res.render("products", { products, notFound:null })
     },
 
     searchProducts: async (req, res) => {
@@ -109,6 +109,8 @@ const productController = {
             raw: true
         });
 
+        if(queryDB.length === 0 ) return res.render('searchProducts', { notFound: `No se encontraron productos relacionados a: ${data}` })
+
         const products = queryDB.map(product => {
             return {
                 id_product: product.id_product,
@@ -124,7 +126,7 @@ const productController = {
             };
         });
 
-        return res.render('searchProducts', { products })
+        return res.render('searchProducts', { products, notFound:null })
     },
     editProduct: async (req, res) => {
 

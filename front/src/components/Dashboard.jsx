@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Row, Col, Container } from 'react-bootstrap';
 import { useProducts } from '../hooks/useProducts';
+import { useUsers } from '../hooks/useUsers';
 
 
 export const Dashboard = () => {
@@ -14,6 +15,16 @@ export const Dashboard = () => {
         remove,
         refreshProducts
     } = useProducts();
+
+    const {
+        users,
+        loadingUsers,
+        errorUsers,
+        readUsers,
+        refreshUsers
+    } = useUsers();
+
+    console.log(users.users)
     return (
         <Container fluid bg="secondary" className="p-4 mt-5">
             <Row>
@@ -22,9 +33,15 @@ export const Dashboard = () => {
                         <Card.Header>Usuarios</Card.Header>
                         <Card.Body>
                             <Card.Title>Datos de Usuarios</Card.Title>
-                            <Card.Text>
 
-                            </Card.Text>
+                            {loadingUsers && <div>Cargando usuarios...</div>}
+                            {errorUsers && <div>Error: {errorUsers.message}</div>}
+                            <ul>
+                                {users.map((user, index) => (
+                                    <li key={index}>{user.name} - {user.email}</li>
+                                ))}
+                            </ul>
+
                         </Card.Body>
                     </Card>
                 </Col>

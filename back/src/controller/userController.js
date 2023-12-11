@@ -13,7 +13,7 @@ module.exports = {
     register: async (req, res) => {
         const errors = validationResult(req)
         const user = req.body
-        
+
         const userExists = await db.User.findOne({
             where: {
                 email: user.email
@@ -61,7 +61,6 @@ module.exports = {
         }
 
         const query = await db.User.create(newUser)
-        console.log(query)
         return res.render('login')
     },
 
@@ -76,29 +75,45 @@ module.exports = {
         if (email === 'admin@river.com' && password === '123456') {
             const token = jwt.sign({ role: 'superadmin' }, 'riverEsVida', { expiresIn: '1h' });
             res.cookie('auth_token', token, { httpOnly: true, secure: true });
-            return res.redirect('/');
+            return res.redirect('http://localhost:5173');
         } else {
 
             try {
                 const user = await db.User.findOne({ where: { email } });
-                if (user && verifyPassword(password, user.password)) {
-
+                if (user && await verifyPassword(password, user.password)) {
+                    
+                    req.session.user = {
+                        id: user.id_user,
+                        username: user.username,
+                        fullName: `${user.first_name} ${user.last_name}`,
+                        email: user.email,
+                        avatar: user.avatar
+                    }
+                    
                     const token = jwt.sign({ role: 'user', userId: user.id }, 'riverEsVida', { expiresIn: '1h' });
-                    res.cookie('auth_token', token, { httpOnly: true, secure: true });
+                    res.cookie('auth_token', token, { httpOnly: true, secure: false });
+
                     return res.redirect('/');
                 } else {
-                    return res.status(401).send('Credenciales inválidas');
+                    return res.render('login', {
+                        errors: {
+                            login: { msg: 'Credenciales inválidas o error de inicio de sesión.' },
+                            email: { msg: 'Formato de correo inválido.' }, 
+                            password: { msg: 'La contraseña no puede estar vacía.' } 
+                        }
+                    });
                 }
             } catch (error) {
                 console.error(error);
-                return res.status(500).send('Error interno del servidor');
+                return res.render('login', { errors: { msg: 'Error interno del servidor' } });
             }
         }
     },
     profile: (req, res) => {
-        if (!req.user) return res.redirect('/user/login')
-        console.log(req.user);
-        return res.render('profile', { user: req.user })
+        console.log(req.session.user, 'profile')
+        if (!req.session.user) return res.redirect('/user/login')
+
+        return res.render('profile', { user: req.session.user })
     },
 
     logout: (req, res) => {
@@ -108,7 +123,7 @@ module.exports = {
             res.redirect('/');
 
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     }
 }
