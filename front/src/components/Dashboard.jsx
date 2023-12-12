@@ -44,6 +44,11 @@ export const Dashboard = () => {
                             </ul>
 
                         </Card.Body>
+                        <Card.Footer>
+                            <ul>
+                                <li>Cantidad de usuarios: {users.length}</li>
+                            </ul>
+                        </Card.Footer>
                     </Card>
                 </Col>
 
@@ -55,9 +60,14 @@ export const Dashboard = () => {
                             {loadingCart && <div>Cargando usuarios...</div>}
                             {errorCart && <div>Error: {errorCart.message}</div>}
                             <ul>
-                                {carts.map((cart, index) => (
-                                    <li key={index}>ID user: {cart.id_user} - ID cart: {cart.id_cart} - Total: {cart.total_price}</li>
-                                ))}
+                                {carts.map((cart, index) => {
+                                    if (cart.cartDetails.length > 0) {
+                                        return (
+                                            <li key={index}>ID user: {cart.id_user} - ID cart: {cart.id_cart} - Total: {cart.total_price}</li>
+                                        );
+                                    }
+                                    return null;
+                                })}
                             </ul>
                         </Card.Body>
                     </Card>
@@ -71,6 +81,7 @@ export const Dashboard = () => {
                             {loading && <div>Cargando productos...</div>}
                             {error && <div>Error: {error.message}</div>}
                             <ul>
+
                                 {products.map((product, index) => (
                                     <li key={index}>{product.name_product} - {product.price}</li>
                                 ))}

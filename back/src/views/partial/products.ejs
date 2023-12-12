@@ -33,7 +33,11 @@
           <div class="btnInfo">
             <a href="/product/productDetail/<%= producto.id_product %>" class="btnPrimary mt-4">Mas info</a>
           </div>
-          <button class="btnPrimary mt-3 addProduct" id="<%= producto.id_product %>">Añadir al carrito</button>
+          <% if (user && user.role==='superadmin') { %>
+            <a class="btnPrimary btn btn-dark text-white mt-3" href="/product/edit/<%= producto.id_product %>">Editar producto</a>
+          <% } else { %>
+            <button class="btnPrimary mt-3 addProduct" id="<%= producto.id_product %>">Añadir al carrito</button>
+          <% } %>
         </div>
         <% }); %>
           <% }; %>

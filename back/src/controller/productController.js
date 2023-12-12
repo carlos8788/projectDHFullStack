@@ -67,7 +67,8 @@ const productController = {
 
             const query = await db.Product.create(productData);
 
-            return res.redirect('/product/formCreateProduct');
+            // return res.redirect('/product/formCreateProduct');
+            return res.redirect('/');
         } catch (error) {
             console.error("Error creating product:", error);
             return res.status(500).json({ error: "Failed to create product" });
