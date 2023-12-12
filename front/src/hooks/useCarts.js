@@ -1,16 +1,16 @@
 import { useState, useCallback, useEffect } from 'react';
-import { getUsers, getUserById } from '../services/apiUsers'; 
+import { getCarts, getCart } from '../services/apiCarts';
 
-export const useUsers = () => {
-    const [users, setUsers] = useState([]);
+export const useCarts = () => {
+    const [carts, setCarts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const refreshUsers = useCallback(async () => {
+    const refreshCarts = useCallback(async () => {
         setLoading(true);
         try {
-            const data = await getUsers();
-            setUsers(data);
+            const data = await getCarts();
+            setCarts(data);
             setError(null);
         } catch (error) {
             setError(error);
@@ -20,13 +20,14 @@ export const useUsers = () => {
     }, []);
 
     useEffect(() => {
-        refreshUsers();
-    }, [refreshUsers]);
+        refreshCarts();
+    }, [refreshCarts]);
 
-    const readUser = useCallback(async (id) => {
+    const readCart = useCallback(async (userId) => {
         setLoading(true);
         try {
-            return await getUserById(id);
+            const data = await getCart(userId);
+            return data; 
         } catch (error) {
             setError(error);
             return null;
@@ -35,7 +36,5 @@ export const useUsers = () => {
         }
     }, []);
 
-
-
-    return { users, loading, error, readUser, refreshUsers };
+    return { carts, loading, error, readCart, refreshCarts };
 };

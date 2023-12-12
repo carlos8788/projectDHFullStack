@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página No Encontrada</title>
+    <%- include('partial/head') %>
+
+        <style>
+            body {
+                background: url('/images/notFound.jpg') no-repeat center center fixed;
+                background-size: contain;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .container {
+                background-color: rgba(255, 255, 255, 0.05);
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                border-radius: 15px;
+                height: 50%;
+            }
+            h1, p{
+                background-color: rgba(255, 255, 255, 0.5);
+                columns: white;
+                padding: 20px;
+                border-radius: 8px;
+            }
+        </style>
+</head>
+
+<body>
+    <div class="container text-center text-dark">
+        <h1 class="display-4">404 - Página No Autorizada</h1>
+        <p class="lead">Lo sentimos, la página no puede mostrarse.</p>
+        <a href="/" class="btn btn-secondary">Volver a la página principal</a>
+    </div>
+</body>
+
+</html>

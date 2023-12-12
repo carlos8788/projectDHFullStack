@@ -31,7 +31,7 @@ const apiUsersController = {
     getUser: async (req, res) => {
         try {
             const user = await db.User.findOne({
-                where: { id: req.params.id },
+                where: { id_user: req.params.id },
                 raw: true
             })
             delete user.password

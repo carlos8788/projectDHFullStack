@@ -39,12 +39,17 @@
                 </div>
 
                 <div class="card-footer my-4">
-                    <button class="btnPrimary">Agregar al Carrito</button>
+                    <% if (user && user.role==='superadmin') { %>
+                        <a class="btnPrimary btn btn-dark text-white" href="/product/edit/<%= product.id_product %>">Editar producto</a>
+                    <% } else { %>
+                        <button class="btnPrimary addProduct" id="<%= product.id_product %>">Agregar al Carrito</button>
+                    <% } %>
                     <a class="btnPrimary btnBack btn btn-light" href="/product/products">volver</a>
                 </div>
             </div>
         </main>
         <%- include('partial/footer') %>
+        <script src="/js/addProduct.js"></script>
 </body>
 
 </html>

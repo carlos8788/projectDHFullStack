@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('partial/head') %>
+    <title>Editar Producto</title>
+</head>
+
+<body>
+    <%- include('partial/header') %>
+    <main class="form-container">
+
+        <form class="form" method="POST" action="/product/updateProduct/<%= product.id_product %>" enctype="multipart/form-data" id="form-edit">
+            <h2 class="titulo-form-registro">Editar producto</h2>
+
+            <!-- Nombre del Producto -->
+            <div class="div-form">
+                <label for="product-name">Nombre del producto</label>
+                <input type="text" id="product-name" name="productName" value="<%= product.name_product %>"
+                    class="form-control <%= (locals.errors && errors.productName) ? 'error-input' : '' %>">
+                <%- locals.errors && errors.productName ? `<p class="msg-error">${errors.productName.msg}</p>` : '' %>
+            </div>
+
+            <!-- Descripción -->
+            <div class="div-form">
+                <label for="description">Descripción</label>
+                <input type="text" id="description" name="description" value="<%= product.description %>"
+                    class="form-control <%= (locals.errors && errors.description) ? 'error-input' : '' %>">
+                <%- locals.errors && errors.description ? `<p class="msg-error">${errors.description.msg}</p>` : '' %>
+            </div>
+
+            <!-- Categoría -->
+            <div class="div-form">
+                <label for="category">Categoría</label>
+                <select id="category" name="category" class="form-control">
+                    <% options.categories.forEach(category => { %>
+                        <option value="<%= category.id_category %>" <%= category.name == product.category ? 'selected' : '' %>>
+                            <%= category.name %>
+                        </option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <!-- Color -->
+            <div class="div-form">
+                <label for="color">Color</label>
+                <select id="color" name="color" class="form-control">
+                    <% options.colors.forEach(color => { %>
+                        <option value="<%= color.id_color %>" <%= color.name == product.color ? 'selected' : '' %>>
+                            <%= color.name %>
+                        </option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <!-- Stock -->
+            <div class="div-form ">
+                <label for="stock">Stock</label>
+                <input type="number" id="stock" name="stock" value="<%= product.stock %>"
+                    class="form-control <%= (locals.errors && errors.stock) ? 'error-input' : '' %>">
+                <%- locals.errors && errors.stock ? `<p class="msg-error">${errors.stock.msg}</p>` : '' %>
+            </div>
+
+            <!-- Precio -->
+            <div class="div-form">
+                <label for="price">Precio</label>
+                <input type="number" id="price" name="price" value="<%= product.price %>"
+                    class="form-control <%= (locals.errors && errors.price) ? 'error-input' : '' %>">
+                <%- locals.errors && errors.price ? `<p class="msg-error">${errors.price.msg}</p>` : '' %>
+            </div>
+
+            <!-- Marca -->
+            <div class="div-form">
+                <label for="brand">Marca</label>
+                <select id="brand" name="brand" class="form-control">
+                    <% options.brands.forEach(brand => { %>
+                        <option value="<%= brand.id_brand %>" <%= brand.name == product.brand ? 'selected' : '' %>>
+                            <%= brand.name %>
+                        </option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <!-- Tamaño -->
+            <div class="div-form">
+                <label for="size">Tamaño</label>
+                <select id="size" name="size" class="form-control">
+                    <% options.sizes.forEach(size => { %>
+                        <option value="<%= size.id_size %>" <%= size.name == product.size ? 'selected' : '' %>>
+                            <%= size.name %>
+                        </option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <!-- Imagen del Producto -->
+            <div class="div-form file">
+                <label for="product-img" class="label-file">Cargue la imagen del producto</label>
+                <input name="productImg" type="file" id="product-img" class="load-file ">
+                <% if (locals.errors && errors.productImg) { %>
+                    <p class="msg-error">
+                        <%= errors.productImg.msg %>
+                    </p>
+                <% } %>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="div-form-bt">
+                <button type="submit" class="btnPrimary">Actualizar producto</button>
+                <a  class="btnPrimary bg-dark text-white" href="/">Cancelar</a>
+            </div>
+
+        </form>
+    </main>
+    <%- include('partial/footer')%>
+    <script src="/js/editProduct.js"></script>
+</body>
+
+</html>

@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const apiClient = axios.create({
   baseURL: 'http://localhost:3000/api',
 });
@@ -56,32 +55,6 @@ export const deleteProductById = async (productId) => {
 };
 
 
-// Carritos
-export const getCart = async (userId) => {
-  try {
-    const response = await apiClient.get(`/carts/${userId}`);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
 
-export const addItemToCart = async (userId, itemId) => {
-  try {
-    const response = await apiClient.post(`/carts/${userId}/items`, { itemId });
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const removeItemFromCart = async (userId, itemId) => {
-  try {
-    const response = await apiClient.delete(`/carts/${userId}/items/${itemId}`);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
 
 

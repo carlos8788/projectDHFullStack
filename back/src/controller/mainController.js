@@ -13,26 +13,14 @@ const mainController = {
             ]
         });
         const products = productsToDB.map(product => toProductData(product));
-        // const mostVisited = products.filter(p => p.category === 'Más visitado')
-        console.log(req.user)
-        return res.render('home', { products, notFound: false })
-    },
 
-    productDetail: (req, res) => {
-        const { id } = req.params
-        // const producto = products.find(p => p.id === id)
-        return res.render('productDetail', { producto })
+        return res.render('home', { products, notFound: false })
     },
 
     formCreateProduct: (req, res) => {
         return res.render('formCreateProduct')
     },
 
-    products: (req, res) => {
-        const productos = []
-        
-        return res.render("products", { productos })
-    }
 }
 
 module.exports = mainController

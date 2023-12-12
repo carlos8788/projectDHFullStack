@@ -13,8 +13,13 @@ const apiProductsController = {
                 ]
             });
             const products = productsToDB.map(product => toProductData(product));
+            const categoriesToDB = await db.Category.count();
 
-            return res.json(products)
+            const payload = {
+                products,
+                categories: categoriesToDB
+            }
+            return res.json(payload)
         } catch (error) {
             console.log(error);
         }
@@ -23,7 +28,7 @@ const apiProductsController = {
     getProduct: async (req, res) => {
         try {
             const product = await db.Product.findOne({
-                where: { id: req.params.id },
+                where: { id_product : req.params.id},
                 include: [
                     { model: db.Category, as: 'category', attributes: ['name'] },
                     { model: db.Color, as: 'color', attributes: ['name'] },
@@ -32,66 +37,10 @@ const apiProductsController = {
                 ],
                 raw: true
             })
+            console.log(product)
             return res.json(product)
         } catch (error) {
             return res.json(error.message)
-        }
-    },
-
-
-
-    updateProduct: async (req, res) => {
-        try {
-
-            const { id } = req.params;
-            const updatedProduct = await db.Product.update(req.body, {
-                where: { id: id }
-            });
-
-            if (updatedProduct) {
-
-                return res.json({ message: 'Producto actualizado con éxito' });
-            } else {
-
-                return res.status(404).json({ message: 'Producto no encontrado' });
-            }
-        } catch (error) {
-
-            console.log(error);
-            return res.status(500).json(error.message);
-        }
-    },
-
-
-    deleteProduct: async (req, res) => {
-        try {
-            const { id } = req.params;
-            const deletedProduct = await db.Product.destroy({
-                where: { id: id }
-            });
-
-            if (deletedProduct) {
-
-                return res.json({ message: 'Producto eliminado con éxito' });
-            } else {
-
-                return res.status(404).json({ message: 'Producto no encontrado' });
-            }
-        } catch (error) {
-
-            console.log(error);
-            return res.status(500).json(error.message);
-        }
-    },
-    
-    createProduct: async (req, res) => {
-        try {
-            
-            const newProduct = await db.Product.create(req.body);
-            return res.status(201).json(newProduct); 
-        } catch (error) {
-            console.error('Error creating new product:', error);
-            return res.status(500).json({ message: 'Error al crear el producto', error: error.message });
         }
     }
 

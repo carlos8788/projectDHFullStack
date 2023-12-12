@@ -21,7 +21,11 @@ module.exports = (sequelize, dataTypes) => {
         purchase_date: {
             type: dataTypes.DATEONLY,
             allowNull: false
-        }
+        },
+        finalized: {
+            type: dataTypes.BOOLEAN,
+            defaultValue: false
+        },
     }
 
     const config = {
@@ -31,12 +35,17 @@ module.exports = (sequelize, dataTypes) => {
 
     const Cart = sequelize.define(alias, cols, config);
 
-    Cart.associate = function(models) {
+    Cart.associate = function (models) {
         Cart.belongsTo(models.User, {
             as: 'user',
             foreignKey: 'id_user'
         });
+        // Asociación con CartDetail
+        Cart.hasMany(models.CartDetail, {
+            as: 'cartDetails',
+            foreignKey: 'id_cart'
+        });
     }
 
-    return Cart;  
+    return Cart;
 }

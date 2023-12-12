@@ -2,17 +2,15 @@ import React from 'react';
 import { Card, Row, Col, Container } from 'react-bootstrap';
 import { useProducts } from '../hooks/useProducts';
 import { useUsers } from '../hooks/useUsers';
-
+import { useCarts } from '../hooks/useCarts';
 
 export const Dashboard = () => {
     const {
+        categories,
         products,
         loading,
         error,
-        create,
         read,
-        update,
-        remove,
         refreshProducts
     } = useProducts();
 
@@ -24,12 +22,15 @@ export const Dashboard = () => {
         refreshUsers
     } = useUsers();
 
-    console.log(users.users)
+
+    const { carts, loadingCart, errorCart, readCart, refreshCarts } = useCarts();
+    console.log(products)
+
     return (
         <Container fluid bg="secondary" className="p-4 mt-5">
             <Row>
                 <Col md={4} className="mb-4">
-                    <Card bg="primary" text="white">
+                    <Card bg="danger" text="white">
                         <Card.Header>Usuarios</Card.Header>
                         <Card.Body>
                             <Card.Title>Datos de Usuarios</Card.Title>
@@ -51,9 +52,13 @@ export const Dashboard = () => {
                         <Card.Header>Carritos</Card.Header>
                         <Card.Body>
                             <Card.Title>Datos de Carritos</Card.Title>
-                            <Card.Text>
-
-                            </Card.Text>
+                            {loadingCart && <div>Cargando usuarios...</div>}
+                            {errorCart && <div>Error: {errorCart.message}</div>}
+                            <ul>
+                                {carts.map((cart, index) => (
+                                    <li key={index}>ID user: {cart.id_user} - ID cart: {cart.id_cart} - Total: {cart.total_price}</li>
+                                ))}
+                            </ul>
                         </Card.Body>
                     </Card>
                 </Col>
@@ -71,6 +76,12 @@ export const Dashboard = () => {
                                 ))}
                             </ul>
                         </Card.Body>
+                        <Card.Footer>
+                            <ul>
+                                <li>Cantidad de productos: {products.length}</li>
+                                <li>Cantidad de categorias: {categories}</li>
+                            </ul>
+                        </Card.Footer>
                     </Card>
                 </Col>
             </Row>

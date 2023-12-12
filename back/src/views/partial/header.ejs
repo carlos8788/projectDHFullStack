@@ -5,6 +5,7 @@
             <div class="navbar-custom">
                 <a class="navbar-brand" href="/">
                     <div class="navbar-logo-img"></div>
+
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -15,8 +16,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto">
                     <% if (!user || (user && user.role !== 'superadmin')) { %>
+                    
                     <li class="item">
-                        <a class="link" href="/productCart">Carrito</a>
+                        <a class="link" href="/cart">Carrito</a>
                     </li>
                     <% } %>
                     <li class="item">
@@ -29,6 +31,9 @@
                         <% if (user.role==='superadmin') { %>
                         <li class="item">
                             <a class="link" href="/product/formCreateProduct">Crear Producto</a>
+                        </li>
+                        <li class="item">
+                            <a class="link" href="http://localhost:5173">Ir al dashboard</a>
                         </li>
                         <% } %>
                         <li class="item">

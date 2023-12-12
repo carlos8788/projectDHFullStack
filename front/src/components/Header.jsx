@@ -20,17 +20,8 @@ function Header() {
             </Link>
 
             <Nav>
-              <Nav.Link href="#">Home</Nav.Link>
-              <Nav.Link href="#">Features</Nav.Link>
-              <Nav.Link href="#">Pricing</Nav.Link>
-              <Nav.Link href="#">About</Nav.Link>
-              <NavDropdown title="Dropdown" id="navbarDropdown">
-                <NavDropdown.Item href="#">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#">Something else here</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#">Separated link</NavDropdown.Item>
-              </NavDropdown>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="http://localhost:3000">Ir a la app</Nav.Link>
             </Nav>
           </div>
         </Navbar.Collapse>

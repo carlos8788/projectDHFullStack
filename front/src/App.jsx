@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Layout from './pages/Layout';
 import DataTable from './pages/DataTable';
-
 function App() {
   return (
     <Router>

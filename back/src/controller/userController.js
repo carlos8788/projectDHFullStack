@@ -81,7 +81,7 @@ module.exports = {
             try {
                 const user = await db.User.findOne({ where: { email } });
                 if (user && await verifyPassword(password, user.password)) {
-                    
+
                     req.session.user = {
                         id: user.id_user,
                         username: user.username,
@@ -89,8 +89,8 @@ module.exports = {
                         email: user.email,
                         avatar: user.avatar
                     }
-                    
-                    const token = jwt.sign({ role: 'user', userId: user.id }, 'riverEsVida', { expiresIn: '1h' });
+
+                    const token = jwt.sign({ role: 'user', userId: user.id_user }, 'riverEsVida', { expiresIn: '1h' });
                     res.cookie('auth_token', token, { httpOnly: true, secure: false });
 
                     return res.redirect('/');
@@ -98,8 +98,8 @@ module.exports = {
                     return res.render('login', {
                         errors: {
                             login: { msg: 'Credenciales inválidas o error de inicio de sesión.' },
-                            email: { msg: 'Formato de correo inválido.' }, 
-                            password: { msg: 'La contraseña no puede estar vacía.' } 
+                            email: { msg: 'Formato de correo inválido.' },
+                            password: { msg: 'La contraseña no puede estar vacía.' }
                         }
                     });
                 }
@@ -109,11 +109,29 @@ module.exports = {
             }
         }
     },
-    profile: (req, res) => {
-        console.log(req.session.user, 'profile')
-        if (!req.session.user) return res.redirect('/user/login')
+    profile: async (req, res) => {
+        const authToken = req.cookies['auth_token']
 
-        return res.render('profile', { user: req.session.user })
+        if (authToken) {
+
+            try {
+                const payload = jwt.verify(authToken, 'riverEsVida');
+                const user = await db.User.findOne({ where: { id_user: payload.userId } });
+                    const profile = {
+                        id: user.id_user,
+                        username: user.username,
+                        fullName: `${user.first_name} ${user.last_name}`,
+                        email: user.email,
+                        avatar: user.avatar
+                    }
+                return res.render('profile', { user: profile });
+            } catch (error) {
+                // Manejar error de verificación del token
+                console.log(error)
+                res.send(error)
+            }
+
+        }
     },
 
     logout: (req, res) => {

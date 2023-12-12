@@ -1,28 +1,34 @@
 import React from 'react';
 import { Table, Dropdown, DropdownButton } from 'react-bootstrap';
 import { useProducts } from '../hooks/useProducts';
-// import { useCarts } from '../hooks/useCarts'; // Asumiendo que tienes hooks similares para carritos y usuarios
+import { useCarts } from '../hooks/useCarts'; // Asumiendo que tienes hooks similares para carritos y usuarios
 import { useUsers } from '../hooks/useUsers';
 import TablaProducts from './TablaProducts';
 import Tablausers from './TableUsers';
+import TablaCarts from './TablaCarts';
 
 const DataTable = ({ dataType }) => {
 
 
     if (dataType === 'products') {
-        const { products, loading: productsLoading, error: productsError } = useProducts();
+        const { products, loading: productsLoading, error: productsError, read } = useProducts();
 
         return (
-            <TablaProducts data={products} loading={productsLoading} error={productsError} />
+            <TablaProducts data={products} loading={productsLoading} error={productsError} getProductId={read} />
         )
     } else if (dataType === 'carts') {
-        ({ data, loading, error } = useCarts());
+        const { carts, loading, error, readCart } = useCarts();
+        return (
+            <TablaCarts data={carts} loading={loading} error={error} getCart={readCart} />
+        )
     } else if (dataType === 'users') {
         const {
             users,
             loading,
-            error } = useUsers();
-        return <Tablausers data={users} loading={loading} error={error} />
+            error,
+            readUser
+        } = useUsers();
+        return <Tablausers data={users} loading={loading} error={error} getUser={readUser}/>
     }
 
 };
