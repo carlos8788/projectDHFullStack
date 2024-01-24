@@ -6,11 +6,4 @@ router.get('/', controller.cartDetail)
 router.post('/', controller.addProductToCart)
 router.post('/finalizePurchase', controller.finalizePurchase)
 
-// router.get('/register', controller.viewRegister)
-
-// router.get('/login', controller.login)
-
-
-
-
 module.exports = router

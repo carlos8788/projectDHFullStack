@@ -13,6 +13,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 
 const { userMiddleware } = require('./middlewares/authenticate')
+
 const cors = require('cors');
 
 const session = require('express-session');
@@ -31,6 +32,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
 app.use(cookieParser());
 app.use(express.static('public'));
 app.use(express.json());
